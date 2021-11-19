@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="user">
+    <file>user-icon.png</file>
+    <file>user-female.png</file>
+    <file>user-male.png</file>
+  </qresource>
+</RCC>

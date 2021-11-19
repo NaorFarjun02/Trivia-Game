@@ -1,5 +1,5 @@
 from datetime import datetime
-
+import re
 
 class User:
     def create_date(self):
@@ -23,3 +23,8 @@ class User:
         self.password = password
         self.username = username
         self.create_date = self.create_date()
+
+if len(re.findall("[a-zA-Z]", "123dsd"))<2 :
+    print("good",re.findall("[a-zA-Z]", "123dsd"))
+else:
+    print("not good",re.findall("[a-zA-Z]", "123dsd"))

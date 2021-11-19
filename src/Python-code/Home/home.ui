@@ -71,17 +71,31 @@ letter-spacing:2px;</string>
     <string>Score Table</string>
    </property>
   </widget>
-  <widget class="QFrame" name="profilemenu">
+  <widget class="QFrame" name="menu">
    <property name="geometry">
     <rect>
-     <x>660</x>
-     <y>20</y>
-     <width>120</width>
-     <height>81</height>
+     <x>680</x>
+     <y>30</y>
+     <width>101</width>
+     <height>121</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">border: 1px solid rgb(255, 255, 198);</string>
+    <string notr="true">
+
+QPushButton{
+	border-radius:10px;
+font: 10pt &quot;Consolas&quot;;
+color: rgb(255, 255, 0);
+letter-spacing:1px;
+border: 1px solid rgb(255, 255, 127);
+out line:none;
+}
+
+QFrame{
+border: 1px solid rgb(255, 255, 198);
+border-radius:15px;
+}</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -92,16 +106,14 @@ letter-spacing:2px;</string>
    <widget class="QPushButton" name="profilebutton">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>10</y>
       <width>75</width>
       <height>23</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Consolas&quot;;
-color: rgb(255, 255, 0);
-letter-spacing:1px;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
      <string>profile</string>
@@ -110,93 +122,69 @@ letter-spacing:1px;</string>
    <widget class="QPushButton" name="settingbutton">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
+      <y>90</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Settings</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="shopbutton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
       <y>50</y>
       <width>75</width>
       <height>23</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 10pt &quot;Consolas&quot;;
-color: rgb(255, 255, 0);
-letter-spacing:1px;</string>
+     <string notr="true"/>
     </property>
     <property name="text">
-     <string>Settings</string>
+     <string>shop</string>
     </property>
    </widget>
   </widget>
-  <widget class="QLabel" name="shopbutton">
+  <widget class="QPushButton" name="menubutton">
    <property name="geometry">
     <rect>
-     <x>790</x>
-     <y>70</y>
-     <width>51</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border: 1px solid rgb(255, 255, 198);
-border-radius: 25px;
-padding:2px;</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="textFormat">
-    <enum>Qt::RichText</enum>
-   </property>
-   <property name="pixmap">
-    <pixmap>shop.png</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>790</x>
-     <y>10</y>
-     <width>51</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-radius: 25px;</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="textFormat">
-    <enum>Qt::RichText</enum>
-   </property>
-   <property name="pixmap">
-    <pixmap>user.jpg</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="profilelogo">
-   <property name="geometry">
-    <rect>
-     <x>780</x>
-     <y>10</y>
+     <x>770</x>
+     <y>20</y>
      <width>71</width>
      <height>51</height>
     </rect>
    </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:7pt; font-weight:600; text-decoration: underline;&quot;&gt;__________&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:7pt; font-weight:600; text-decoration: underline;&quot;&gt;__________&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:7pt; font-weight:600; text-decoration: underline;&quot;&gt;__________&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="whatsThis">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:6pt; font-weight:600; text-decoration: underline;&quot;&gt;__________&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:6pt; font-weight:600; text-decoration: underline;&quot;&gt;__________&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-size:6pt; font-weight:600; text-decoration: underline;&quot;&gt;__________&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background: transparent;</string>
+    <string notr="true">border-radius:10px;</string>
    </property>
    <property name="text">
-    <string/>
+    <string>_____
+_____
+_____</string>
    </property>
   </widget>
+  <zorder>menubutton</zorder>
+  <zorder>label</zorder>
+  <zorder>playbutton</zorder>
+  <zorder>scoretablbutton</zorder>
+  <zorder>menu</zorder>
  </widget>
  <resources>
-  <include location="../imgs/user.qrc"/>
+  <include location="user.qrc"/>
+  <include location="shop.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="shop">
+    <file>shop-cart.png</file>
+  </qresource>
+</RCC>
