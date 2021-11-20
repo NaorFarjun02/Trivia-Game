@@ -33,7 +33,7 @@ font-size:50px;</string>
     <string>Login</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="email">
+  <widget class="QLineEdit" name="username">
    <property name="geometry">
     <rect>
      <x>320</x>
@@ -57,7 +57,7 @@ background-color: rgb(117, 117, 117);</string>
     <string/>
    </property>
    <property name="placeholderText">
-    <string>Email</string>
+    <string>Username</string>
    </property>
   </widget>
   <widget class="QLineEdit" name="password">
@@ -76,6 +76,9 @@ color: rgb(255, 255, 255);
 border:2px solid rgb(26, 26, 26);
 border-radius:15px;
 font-size:15px;</string>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Password</enum>
    </property>
    <property name="placeholderText">
     <string>Password</string>
@@ -99,6 +102,9 @@ background-color: rgb(255, 204, 0);</string>
    </property>
    <property name="text">
     <string>Login</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="createaccountbutton">
