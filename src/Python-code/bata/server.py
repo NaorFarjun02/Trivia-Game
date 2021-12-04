@@ -14,8 +14,8 @@ questions = {}
 logged_users = {}  # a dictionary of client hostnames to usernames - will be used later
 
 ERROR_MSG = "Error! "
-SERVER_PORT = 444
-SERVER_IP = "127.0.0.1"
+SERVER_PORT = 5555
+SERVER_IP = "0.0.0.0"
 MAX_MSG_LENGTH = 1024
 
 

@@ -16,48 +16,8 @@ class Ui_createaccount(object):
         createaccount.setObjectName("createaccount")
         createaccount.resize(850, 600)
         createaccount.setStyleSheet("background-color: rgb(54, 54, 54);")
-        self.label = QtWidgets.QLabel(createaccount)
-        self.label.setGeometry(QtCore.QRect(340, 100, 181, 61))
-        self.label.setStyleSheet("color: rgb(223, 223, 223);\n"
-"font-size:50px;")
-        self.label.setObjectName("label")
-        self.email = QtWidgets.QLineEdit(createaccount)
-        self.email.setGeometry(QtCore.QRect(320, 190, 220, 33))
-        self.email.setStyleSheet("padding:5px;\n"
-"border:2px solid rgb(26, 26, 26);\n"
-"border-radius:15px;\n"
-"font-size:15px;\n"
-"color: rgb(255, 255, 255);\n"
-"background-color: rgb(117, 117, 117);")
-        self.email.setObjectName("email")
-        self.password = QtWidgets.QLineEdit(createaccount)
-        self.password.setGeometry(QtCore.QRect(320, 310, 220, 33))
-        self.password.setStyleSheet("padding:5px;\n"
-"background-color: rgb(117, 117, 117);\n"
-"color: rgb(255, 255, 255);\n"
-"border:2px solid rgb(26, 26, 26);\n"
-"border-radius:15px;\n"
-"font-size:15px;")
-        self.password.setObjectName("password")
-        self.singupbutton = QtWidgets.QPushButton(createaccount)
-        self.singupbutton.setGeometry(QtCore.QRect(330, 420, 200, 35))
-        self.singupbutton.setStyleSheet("padding:5px;\n"
-"border:2px solid rgb(26, 26, 26);\n"
-"border-radius:15px;\n"
-"font-size:17px;\n"
-"background-color: rgb(255, 204, 0);")
-        self.singupbutton.setObjectName("singupbutton")
-        self.confirmpass = QtWidgets.QLineEdit(createaccount)
-        self.confirmpass.setGeometry(QtCore.QRect(320, 370, 220, 33))
-        self.confirmpass.setStyleSheet("padding:5px;\n"
-"background-color: rgb(117, 117, 117);\n"
-"color: rgb(255, 255, 255);\n"
-"border:2px solid rgb(26, 26, 26);\n"
-"border-radius:15px;\n"
-"font-size:15px;")
-        self.confirmpass.setObjectName("confirmpass")
         self.username = QtWidgets.QLineEdit(createaccount)
-        self.username.setGeometry(QtCore.QRect(320, 250, 220, 33))
+        self.username.setGeometry(QtCore.QRect(290, 240, 220, 33))
         self.username.setStyleSheet("padding:5px;\n"
 "background-color: rgb(117, 117, 117);\n"
 "color: rgb(255, 255, 255);\n"
@@ -66,14 +26,54 @@ class Ui_createaccount(object):
 "font-size:15px;")
         self.username.setText("")
         self.username.setObjectName("username")
+        self.confirmpass = QtWidgets.QLineEdit(createaccount)
+        self.confirmpass.setGeometry(QtCore.QRect(290, 360, 220, 33))
+        self.confirmpass.setStyleSheet("padding:5px;\n"
+"background-color: rgb(117, 117, 117);\n"
+"color: rgb(255, 255, 255);\n"
+"border:2px solid rgb(26, 26, 26);\n"
+"border-radius:15px;\n"
+"font-size:15px;")
+        self.confirmpass.setObjectName("confirmpass")
+        self.label = QtWidgets.QLabel(createaccount)
+        self.label.setGeometry(QtCore.QRect(310, 90, 181, 61))
+        self.label.setStyleSheet("color: rgb(223, 223, 223);\n"
+"font-size:50px;")
+        self.label.setObjectName("label")
+        self.email = QtWidgets.QLineEdit(createaccount)
+        self.email.setGeometry(QtCore.QRect(290, 180, 220, 33))
+        self.email.setStyleSheet("padding:5px;\n"
+"border:2px solid rgb(26, 26, 26);\n"
+"border-radius:15px;\n"
+"font-size:15px;\n"
+"color: rgb(255, 255, 255);\n"
+"background-color: rgb(117, 117, 117);")
+        self.email.setObjectName("email")
+        self.password = QtWidgets.QLineEdit(createaccount)
+        self.password.setGeometry(QtCore.QRect(290, 300, 220, 33))
+        self.password.setStyleSheet("padding:5px;\n"
+"background-color: rgb(117, 117, 117);\n"
+"color: rgb(255, 255, 255);\n"
+"border:2px solid rgb(26, 26, 26);\n"
+"border-radius:15px;\n"
+"font-size:15px;")
+        self.password.setObjectName("password")
+        self.singupbutton = QtWidgets.QPushButton(createaccount)
+        self.singupbutton.setGeometry(QtCore.QRect(300, 420, 200, 35))
+        self.singupbutton.setStyleSheet("padding:5px;\n"
+"border:2px solid rgb(26, 26, 26);\n"
+"border-radius:15px;\n"
+"font-size:17px;\n"
+"background-color: rgb(255, 204, 0);")
+        self.singupbutton.setObjectName("singupbutton")
         self.backbutton = QtWidgets.QPushButton(createaccount)
-        self.backbutton.setGeometry(QtCore.QRect(20, 20, 61, 51))
+        self.backbutton.setGeometry(QtCore.QRect(10, 20, 61, 51))
         self.backbutton.setStyleSheet("border:1px;\n"
 "background: transparent;")
         self.backbutton.setText("")
         self.backbutton.setObjectName("backbutton")
         self.arrowback_label = QtWidgets.QLabel(createaccount)
-        self.arrowback_label.setGeometry(QtCore.QRect(20, 20, 51, 51))
+        self.arrowback_label.setGeometry(QtCore.QRect(10, 20, 51, 51))
         self.arrowback_label.setStyleSheet("\n"
 "background-color: rgb(65, 65, 65);\n"
 "border-radius:25px;\n"
@@ -84,14 +84,6 @@ class Ui_createaccount(object):
         self.arrowback_label.setPixmap(QtGui.QPixmap("c:\\Users\\Naorf\\Documents\\GitHub\\Trivia-Game\\src\\Python-code\\Create-account\\../icons/arrow-left.png"))
         self.arrowback_label.setScaledContents(True)
         self.arrowback_label.setObjectName("arrowback_label")
-        self.label.raise_()
-        self.email.raise_()
-        self.password.raise_()
-        self.singupbutton.raise_()
-        self.confirmpass.raise_()
-        self.username.raise_()
-        self.arrowback_label.raise_()
-        self.backbutton.raise_()
 
         self.retranslateUi(createaccount)
         QtCore.QMetaObject.connectSlotsByName(createaccount)
@@ -99,9 +91,9 @@ class Ui_createaccount(object):
     def retranslateUi(self, createaccount):
         _translate = QtCore.QCoreApplication.translate
         createaccount.setWindowTitle(_translate("createaccount", "Create Accont"))
+        self.username.setPlaceholderText(_translate("createaccount", "Username"))
+        self.confirmpass.setPlaceholderText(_translate("createaccount", "Password Perification"))
         self.label.setText(_translate("createaccount", "Sing Up"))
         self.email.setPlaceholderText(_translate("createaccount", "Email"))
         self.password.setPlaceholderText(_translate("createaccount", "Password"))
         self.singupbutton.setText(_translate("createaccount", "Sing Up"))
-        self.confirmpass.setPlaceholderText(_translate("createaccount", "Password Perification"))
-        self.username.setPlaceholderText(_translate("createaccount", "Username"))

@@ -9,11 +9,13 @@ class Home(QDialog):
         """init function that set al the main stuff of th page like UI and clicked event"""
         super(Home, self).__init__()
         loadUi("Home\home.ui", self)  # load the UI of the page
+        self.widget = widget
+        
         self.menu.hide()  # hide the side menu
         self.menubutton.clicked.connect(
             self.show_menu
         )  # click event to the menu button
-        self.widget = widget
+        
         self.profilebutton.clicked.connect(
             self.profile
         )  # click event to the profile button in the menu
@@ -38,6 +40,7 @@ class Home(QDialog):
             self.widget.setCurrentIndex(global_vers.windows_indexes["login"])
         elif global_vers.LOGIN_STATUS == 1:
             print("profile")
+            self.widget.setCurrentIndex(global_vers.windows_indexes["profile"])
 
     def shop(self):
         print("shop")

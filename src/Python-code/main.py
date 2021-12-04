@@ -10,13 +10,14 @@ from user import User
 from subFiles.home import Home
 from subFiles.login import Login
 from subFiles.createaccount import CreateAcount
+from subFiles.profile import Profile
 import global_vers
 
-global_vers.LOGIN_STATUS = 0
+global_vers.LOGIN_STATUS = 0  # in the start the user is not login
 
 
-app = QApplication(sys.argv)
-widget = QtWidgets.QStackedWidget()
+app = QApplication(sys.argv)  # create the app
+widget = QtWidgets.QStackedWidget()  # create list of all views
 
 home = Home(widget)  # home page
 widget.insertWidget(global_vers.windows_indexes["home"], home)
@@ -27,8 +28,8 @@ widget.insertWidget(global_vers.windows_indexes["login"], login)
 create_account = CreateAcount(widget)  # create account page
 widget.insertWidget(global_vers.windows_indexes["create"], create_account)
 
-# profile = Profile()#profile page
-# widget.insertWidget(global_vers.windows_indexes["profile"], profile)
+profile = Profile(widget)  # profile page
+widget.insertWidget(global_vers.windows_indexes["profile"], profile)
 
 widget.setCurrentIndex(0)
 widget.setFixedWidth(850)

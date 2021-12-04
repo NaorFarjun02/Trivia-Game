@@ -25,6 +25,7 @@ class CreateAcount(QDialog):
         super(CreateAcount, self).__init__()
         loadUi("Create-account\createaccount.ui", self)  # load the UI of the page
         self.widget = widget
+        
         self.confirmpass.returnPressed.connect(
             self.create_account_func
         )  # enter event to confirmed password filed
@@ -72,15 +73,15 @@ class CreateAcount(QDialog):
     def check_username(self):
         test_username = self.username.text()
         # get from the database the username of evreyone
-        usernames = ["naor"]
-        if test_username in usernames:
-            create_msgbox(
-                "username-error",
-                "the username exists in the system, select another one",
-            )
-            return 0
-        else:
-            return 1
+        for user in global_vers.users:
+            if test_username == user.getUsername():
+                create_msgbox(
+                    "username-error",
+                    "the username exists in the system, select another one",
+                )
+                return 0
+            else:
+                return 1
 
     def check_password(self):
         if self.password.text() == self.confirmpass.text():

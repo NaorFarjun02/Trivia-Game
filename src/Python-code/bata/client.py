@@ -2,8 +2,8 @@ import socket
 import sys
 import chatlib  # To use chatlib functions or consts, use chatlib.****
 
-SERVER_IP = "127.0.0.1"  # Our server will run on same computer as client
-SERVER_PORT = 444
+SERVER_IP = "46.116.103.161"  # Our server will run on same computer as client
+SERVER_PORT = 5555
 ERROR = "ERROR"
 OK = "OK"
 MAX_MSG_LENGTH = 1024
