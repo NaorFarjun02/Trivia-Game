@@ -67,7 +67,7 @@ class Login(QDialog):
                 % (username, password)
             )
             global_vers.LOGIN_STATUS = 1
-            self.widget.setCurrentIndex(global_vers.windows_indexes["home"])
+            self.widget.setCurrentIndex(global_vers.windows_indexes["profile"])
         else:
             # if the user is don't exists, msg box tell the user that something wrong
             create_msgbox("error", "Username or password incorrect")

@@ -14,9 +14,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(850, 600)
+        Form.resize(960, 730)
         Form.setStyleSheet("background-color: rgb(54, 54, 54);\n"
-"outline:none;")
+"outline:none;\n"
+"")
         self.user_info_frame = QtWidgets.QFrame(Form)
         self.user_info_frame.setGeometry(QtCore.QRect(10, 10, 331, 81))
         self.user_info_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -67,19 +68,122 @@ class Ui_Form(object):
         self.label_2.raise_()
         self.add_coins_button.raise_()
         self.achievements_frame = QtWidgets.QFrame(Form)
-        self.achievements_frame.setGeometry(QtCore.QRect(20, 110, 791, 161))
-        self.achievements_frame.setStyleSheet("background-color: rgb(0, 255, 127);")
+        self.achievements_frame.setGeometry(QtCore.QRect(19, 110, 921, 211))
+        self.achievements_frame.setMinimumSize(QtCore.QSize(810, 160))
+        self.achievements_frame.setMaximumSize(QtCore.QSize(930, 215))
+        self.achievements_frame.setStyleSheet("QFrame *{\n"
+"    background-color: rgb(170, 255, 127);\n"
+"}\n"
+"QScrollArea{\n"
+"border:none;\n"
+"}\n"
+"\n"
+"\n"
+"QScrollBar:horizontal{\n"
+"    border:none;\n"
+"    background:rgb(149, 221, 110);\n"
+"    height:14px;\n"
+"    margin:0 15px 0 15px  ;    \n"
+"    border-radius:0px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:horizontal{\n"
+"border:none;\n"
+"height:5px;\n"
+"border-radius:5px;\n"
+"    background-color: rgb(136, 190, 95);\n"
+"outline:none;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:horizontal:hover{\n"
+"    background-color:rgb(102, 143, 71);\n"
+"outline:none;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:horizontal{\n"
+"    background-color: rgb(170, 255, 127);\n"
+"}\n"
+"QScrollBar::add-line:horizontal{\n"
+"    background-color:  rgb(170, 255, 127);\n"
+"}")
         self.achievements_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.achievements_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.achievements_frame.setObjectName("achievements_frame")
+        self.achievement_scrollArea = QtWidgets.QScrollArea(self.achievements_frame)
+        self.achievement_scrollArea.setGeometry(QtCore.QRect(9, 9, 901, 190))
+        self.achievement_scrollArea.setMinimumSize(QtCore.QSize(790, 140))
+        self.achievement_scrollArea.setMaximumSize(QtCore.QSize(905, 200))
+        self.achievement_scrollArea.setStyleSheet("QScrollBar:horizontal{\n"
+"    border:none;\n"
+"    background:rgb(0, 200, 50);\n"
+"}")
+        self.achievement_scrollArea.setSizeAdjustPolicy(QtWidgets.QAbstractScrollArea.AdjustIgnored)
+        self.achievement_scrollArea.setWidgetResizable(True)
+        self.achievement_scrollArea.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.achievement_scrollArea.setObjectName("achievement_scrollArea")
+        self.scrollAreaWidgetContents_achievements = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_achievements.setGeometry(QtCore.QRect(0, 0, 901, 185))
+        self.scrollAreaWidgetContents_achievements.setMinimumSize(QtCore.QSize(800, 120))
+        self.scrollAreaWidgetContents_achievements.setMaximumSize(QtCore.QSize(16777215, 185))
+        self.scrollAreaWidgetContents_achievements.setObjectName("scrollAreaWidgetContents_achievements")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_achievements)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.achievement_frame = QtWidgets.QFrame(self.scrollAreaWidgetContents_achievements)
+        self.achievement_frame.setMinimumSize(QtCore.QSize(800, 160))
+        self.achievement_frame.setMaximumSize(QtCore.QSize(16777215, 180))
+        self.achievement_frame.setStyleSheet("border:none")
+        self.achievement_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.achievement_frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.achievement_frame.setObjectName("achievement_frame")
+        self.frame = QtWidgets.QFrame(self.achievement_frame)
+        self.frame.setGeometry(QtCore.QRect(20, 10, 161, 140))
+        self.frame.setStyleSheet("QFrame{\n"
+"background-color: rgb(0, 0, 0);\n"
+"}\n"
+"\n"
+"QLabel{\n"
+"color: rgb(255, 255, 255);\n"
+"font: 10pt \"Consolas\";\n"
+"background-color: none;\n"
+"}\n"
+"\n"
+"QProgressBar{\n"
+"    background-color: rgb(0, 0, 0);\n"
+"    border:1px solid rgb(255,255,255);\n"
+"}")
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.label_3 = QtWidgets.QLabel(self.frame)
+        self.label_3.setGeometry(QtCore.QRect(10, 10, 110, 50))
+        self.label_3.setStyleSheet("")
+        self.label_3.setScaledContents(False)
+        self.label_3.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.label_3.setWordWrap(True)
+        self.label_3.setObjectName("label_3")
+        self.label_4 = QtWidgets.QLabel(self.frame)
+        self.label_4.setGeometry(QtCore.QRect(45, 110, 50, 20))
+        self.label_4.setStyleSheet("")
+        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_4.setObjectName("label_4")
+        self.progressBar = QtWidgets.QProgressBar(self.frame)
+        self.progressBar.setGeometry(QtCore.QRect(10, 111, 140, 20))
+        self.progressBar.setProperty("value", 50)
+        self.progressBar.setTextVisible(False)
+        self.progressBar.setObjectName("progressBar")
+        self.label_3.raise_()
+        self.progressBar.raise_()
+        self.label_4.raise_()
+        self.verticalLayout.addWidget(self.achievement_frame)
+        self.achievement_scrollArea.setWidget(self.scrollAreaWidgetContents_achievements)
         self.friends_frame = QtWidgets.QFrame(Form)
-        self.friends_frame.setGeometry(QtCore.QRect(20, 280, 381, 311))
+        self.friends_frame.setGeometry(QtCore.QRect(20, 330, 451, 381))
         self.friends_frame.setStyleSheet("background-color: rgb(19, 109, 255);")
         self.friends_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.friends_frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.friends_frame.setObjectName("friends_frame")
         self.statistics_frame = QtWidgets.QFrame(Form)
-        self.statistics_frame.setGeometry(QtCore.QRect(420, 280, 391, 311))
+        self.statistics_frame.setGeometry(QtCore.QRect(490, 330, 451, 381))
         self.statistics_frame.setStyleSheet("background-color: rgb(255, 170, 0);")
         self.statistics_frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.statistics_frame.setFrameShadow(QtWidgets.QFrame.Raised)
@@ -94,4 +198,6 @@ class Ui_Form(object):
         self.Username_label.setText(_translate("Form", "Username"))
         self.uid_label.setText(_translate("Form", "UID - 22220001"))
         self.label_2.setText(_translate("Form", "+"))
+        self.label_3.setText(_translate("Form", "win in 100000 games in a row"))
+        self.label_4.setText(_translate("Form", "50/100"))
 import user_rc

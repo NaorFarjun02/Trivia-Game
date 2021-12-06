@@ -1,3 +1,5 @@
 body{
-   letter-spacing: 2px;
+   display: none;
+   outline: none;
+   background-color: transparent;
 }

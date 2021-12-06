@@ -32,7 +32,7 @@ profile = Profile(widget)  # profile page
 widget.insertWidget(global_vers.windows_indexes["profile"], profile)
 
 widget.setCurrentIndex(0)
-widget.setFixedWidth(850)
-widget.setFixedHeight(600)
+widget.setFixedWidth(960)
+widget.setFixedHeight(730)
 widget.show()
 app.exec_()

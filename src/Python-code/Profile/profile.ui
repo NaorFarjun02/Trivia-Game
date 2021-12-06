@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>850</width>
-    <height>600</height>
+    <width>960</width>
+    <height>730</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,7 +15,8 @@
   </property>
   <property name="styleSheet">
    <string notr="true">background-color: rgb(54, 54, 54);
-outline:none;</string>
+outline:none;
+</string>
   </property>
   <widget class="QFrame" name="user_info_frame">
    <property name="geometry">
@@ -153,14 +154,60 @@ background:none;</string>
   <widget class="QFrame" name="achievements_frame">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>19</x>
      <y>110</y>
-     <width>791</width>
-     <height>161</height>
+     <width>921</width>
+     <height>211</height>
     </rect>
    </property>
+   <property name="minimumSize">
+    <size>
+     <width>810</width>
+     <height>160</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>930</width>
+     <height>215</height>
+    </size>
+   </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(0, 255, 127);</string>
+    <string notr="true">QFrame *{
+	background-color: rgb(170, 255, 127);
+}
+QScrollArea{
+border:none;
+}
+
+
+QScrollBar:horizontal{
+	border:none;
+	background:rgb(149, 221, 110);
+	height:14px;
+	margin:0 15px 0 15px  ;	
+	border-radius:0px;
+}
+
+QScrollBar::handle:horizontal{
+border:none;
+height:5px;
+border-radius:5px;
+	background-color: rgb(136, 190, 95);
+outline:none;
+}
+
+QScrollBar::handle:horizontal:hover{
+	background-color:rgb(102, 143, 71);
+outline:none;
+}
+
+QScrollBar::sub-line:horizontal{
+	background-color: rgb(170, 255, 127);
+}
+QScrollBar::add-line:horizontal{
+	background-color:  rgb(170, 255, 127);
+}</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -168,14 +215,195 @@ background:none;</string>
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
+   <widget class="QScrollArea" name="achievement_scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>9</y>
+      <width>901</width>
+      <height>190</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>790</width>
+      <height>140</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>905</width>
+      <height>200</height>
+     </size>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QScrollBar:horizontal{
+	border:none;
+	background:rgb(0, 200, 50);
+}</string>
+    </property>
+    <property name="sizeAdjustPolicy">
+     <enum>QAbstractScrollArea::AdjustIgnored</enum>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents_achievements">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>901</width>
+       <height>185</height>
+      </rect>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>800</width>
+       <height>120</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>185</height>
+      </size>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QFrame" name="achievement_frame">
+        <property name="minimumSize">
+         <size>
+          <width>800</width>
+          <height>160</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>180</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">border:none</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <widget class="QFrame" name="frame">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>10</y>
+           <width>161</width>
+           <height>140</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QFrame{
+background-color: rgb(0, 0, 0);
+}
+
+QLabel{
+color: rgb(255, 255, 255);
+font: 10pt &quot;Consolas&quot;;
+background-color: none;
+}
+
+QProgressBar{
+	background-color: rgb(0, 0, 0);
+	border:1px solid rgb(255,255,255);
+}</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QLabel" name="label_3">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>110</width>
+            <height>50</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>win in 100000 games in a row</string>
+          </property>
+          <property name="scaledContents">
+           <bool>false</bool>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_4">
+          <property name="geometry">
+           <rect>
+            <x>45</x>
+            <y>110</y>
+            <width>50</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>50/100</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QProgressBar" name="progressBar">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>111</y>
+            <width>140</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="value">
+           <number>50</number>
+          </property>
+          <property name="textVisible">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <zorder>label_3</zorder>
+         <zorder>progressBar</zorder>
+         <zorder>label_4</zorder>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
   </widget>
   <widget class="QFrame" name="friends_frame">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>280</y>
-     <width>381</width>
-     <height>311</height>
+     <y>330</y>
+     <width>451</width>
+     <height>381</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -191,10 +419,10 @@ background:none;</string>
   <widget class="QFrame" name="statistics_frame">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>280</y>
-     <width>391</width>
-     <height>311</height>
+     <x>490</x>
+     <y>330</y>
+     <width>451</width>
+     <height>381</height>
     </rect>
    </property>
    <property name="styleSheet">
