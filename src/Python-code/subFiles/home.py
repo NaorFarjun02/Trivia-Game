@@ -8,7 +8,7 @@ class Home(QDialog):
     def __init__(self, widget):
         """init function that set al the main stuff of th page like UI and clicked event"""
         super(Home, self).__init__()
-        loadUi("Home\home.ui", self)  # load the UI of the page
+        loadUi("UI\home.ui", self)  # load the UI of the page
         self.widget = widget
         
         self.menu.hide()  # hide the side menu

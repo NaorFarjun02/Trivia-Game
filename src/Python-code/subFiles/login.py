@@ -38,7 +38,7 @@ class Login(QDialog):
     def __init__(self, widget):
         """init function that set al the main stuff of th page like UI and clicked event"""
         super(Login, self).__init__()
-        loadUi("Login\login.ui", self)  # load the UI of the page
+        loadUi("UI\login.ui", self)  # load the UI of the page
         
         self.widget = widget
 

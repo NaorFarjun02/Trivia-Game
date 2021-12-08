@@ -10,6 +10,12 @@
     <height>730</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
@@ -18,7 +24,7 @@
 outline:none;
 </string>
   </property>
-  <widget class="QFrame" name="user_info_frame">
+  <widget class="QFrame" name="user_info_frame_container">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -68,7 +74,7 @@ color: rgb(161, 161, 161);
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../icons/user-icon.png</pixmap>
+     <pixmap>icons/user-icon.png</pixmap>
     </property>
    </widget>
    <widget class="QLabel" name="uid_label">
@@ -90,7 +96,7 @@ color: rgb(161, 161, 161);
      <string>UID - 22220001</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="coin_icon">
     <property name="geometry">
      <rect>
       <x>240</x>
@@ -107,10 +113,10 @@ color: rgb(161, 161, 161);
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../icons/coin.png</pixmap>
+     <pixmap>icons/coin.png</pixmap>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
+   <widget class="QLabel" name="plus_icon">
     <property name="geometry">
      <rect>
       <x>280</x>
@@ -144,20 +150,20 @@ background:none;</string>
      <string/>
     </property>
    </widget>
-   <zorder>label</zorder>
+   <zorder>coin_icon</zorder>
    <zorder>Username_label</zorder>
    <zorder>profile_logo</zorder>
    <zorder>uid_label</zorder>
-   <zorder>label_2</zorder>
+   <zorder>plus_icon</zorder>
    <zorder>add_coins_button</zorder>
   </widget>
-  <widget class="QFrame" name="achievements_frame">
+  <widget class="QFrame" name="achievements_frame_container">
    <property name="geometry">
     <rect>
      <x>19</x>
-     <y>110</y>
+     <y>104</y>
      <width>921</width>
-     <height>211</height>
+     <height>221</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -169,7 +175,7 @@ background:none;</string>
    <property name="maximumSize">
     <size>
      <width>930</width>
-     <height>215</height>
+     <height>300</height>
     </size>
    </property>
    <property name="styleSheet">
@@ -219,7 +225,7 @@ QScrollBar::add-line:horizontal{
     <property name="geometry">
      <rect>
       <x>9</x>
-      <y>9</y>
+      <y>30</y>
       <width>901</width>
       <height>190</height>
      </rect>
@@ -242,172 +248,126 @@ QScrollBar::add-line:horizontal{
 	background:rgb(0, 200, 50);
 }</string>
     </property>
+    <property name="verticalScrollBarPolicy">
+     <enum>Qt::ScrollBarAsNeeded</enum>
+    </property>
     <property name="sizeAdjustPolicy">
-     <enum>QAbstractScrollArea::AdjustIgnored</enum>
+     <enum>QAbstractScrollArea::AdjustToContents</enum>
     </property>
     <property name="widgetResizable">
      <bool>true</bool>
     </property>
     <property name="alignment">
-     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+     <set>Qt::AlignJustify|Qt::AlignTop</set>
     </property>
     <widget class="QWidget" name="scrollAreaWidgetContents_achievements">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>901</width>
-       <height>185</height>
+       <width>20</width>
+       <height>20</height>
       </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
      <property name="minimumSize">
       <size>
-       <width>800</width>
-       <height>120</height>
+       <width>0</width>
+       <height>0</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
        <width>16777215</width>
-       <height>185</height>
+       <height>16777215</height>
       </size>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout">
+      <property name="spacing">
+       <number>6</number>
+      </property>
+      <property name="sizeConstraint">
+       <enum>QLayout::SetFixedSize</enum>
+      </property>
       <item>
-       <widget class="QFrame" name="achievement_frame">
-        <property name="minimumSize">
-         <size>
-          <width>800</width>
-          <height>160</height>
-         </size>
+       <layout class="QHBoxLayout" name="achievement_frame">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetFixedSize</enum>
         </property>
-        <property name="maximumSize">
-         <size>
-          <width>16777215</width>
-          <height>180</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border:none</string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <widget class="QFrame" name="frame">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>10</y>
-           <width>161</width>
-           <height>140</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QFrame{
-background-color: rgb(0, 0, 0);
-}
-
-QLabel{
-color: rgb(255, 255, 255);
-font: 10pt &quot;Consolas&quot;;
-background-color: none;
-}
-
-QProgressBar{
-	background-color: rgb(0, 0, 0);
-	border:1px solid rgb(255,255,255);
-}</string>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-         <widget class="QLabel" name="label_3">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>10</y>
-            <width>110</width>
-            <height>50</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>win in 100000 games in a row</string>
-          </property>
-          <property name="scaledContents">
-           <bool>false</bool>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-          </property>
-          <property name="wordWrap">
-           <bool>true</bool>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_4">
-          <property name="geometry">
-           <rect>
-            <x>45</x>
-            <y>110</y>
-            <width>50</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>50/100</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-         <widget class="QProgressBar" name="progressBar">
-          <property name="geometry">
-           <rect>
-            <x>10</x>
-            <y>111</y>
-            <width>140</width>
-            <height>20</height>
-           </rect>
-          </property>
-          <property name="value">
-           <number>50</number>
-          </property>
-          <property name="textVisible">
-           <bool>false</bool>
-          </property>
-         </widget>
-         <zorder>label_3</zorder>
-         <zorder>progressBar</zorder>
-         <zorder>label_4</zorder>
-        </widget>
-       </widget>
+       </layout>
       </item>
      </layout>
     </widget>
    </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>16</x>
+      <y>0</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+font: 14pt &quot;Calibri&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Achievements</string>
+    </property>
+   </widget>
   </widget>
-  <widget class="QFrame" name="friends_frame">
+  <widget class="QFrame" name="friends_frame_container">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>330</y>
-     <width>451</width>
-     <height>381</height>
+     <y>340</y>
+     <width>450</width>
+     <height>380</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(19, 109, 255);</string>
+    <string notr="true">
+QFrame *{
+	background-color: rgb(10, 100, 255);
+}
+QScrollArea{
+border:none;
+}
+
+
+QScrollBar:vertical{
+	border:none;
+	background:rgb(149, 221, 110);
+	width:14px;
+	margin 15px 0 15px 0 ;	
+	border-radius:0px;
+}
+
+QScrollBar::handle:vertical{
+border:none;
+width:5px;
+border-radius:5px;
+	background-color: rgb(136, 190, 95);
+outline:none;
+}
+
+QScrollBar::handle:vertical:hover{
+	background-color:rgb(102, 143, 71);
+outline:none;
+}
+
+QScrollBar::sub-line:vertical{
+	background-color: rgb(170, 255, 127);
+}
+QScrollBar::add-line:vertical{
+	background-color:  rgb(170, 255, 127);
+}</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::StyledPanel</enum>
@@ -415,12 +375,129 @@ QProgressBar{
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>61</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+font: 14pt &quot;Calibri&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Friends</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Friends_count">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>10</y>
+      <width>61</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+font: 14pt &quot;Calibri&quot;;</string>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QScrollArea" name="scrollArea">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>49</y>
+      <width>430</width>
+      <height>300</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>430</width>
+      <height>300</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>450</width>
+      <height>380</height>
+     </size>
+    </property>
+    <property name="sizeAdjustPolicy">
+     <enum>QAbstractScrollArea::AdjustToContents</enum>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents_friends">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>20</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>16777215</height>
+      </size>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_4">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetFixedSize</enum>
+      </property>
+      <item>
+       <layout class="QVBoxLayout" name="friends_frame">
+        <property name="sizeConstraint">
+         <enum>QLayout::SetFixedSize</enum>
+        </property>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </widget>
   </widget>
-  <widget class="QFrame" name="statistics_frame">
+  <widget class="QFrame" name="statistics_frame_container">
    <property name="geometry">
     <rect>
      <x>490</x>
-     <y>330</y>
+     <y>340</y>
      <width>451</width>
      <height>381</height>
     </rect>
@@ -434,10 +511,29 @@ QProgressBar{
    <property name="frameShadow">
     <enum>QFrame::Raised</enum>
    </property>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>81</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+font: 14pt &quot;Calibri&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Statistics</string>
+    </property>
+   </widget>
   </widget>
+  <zorder>achievements_frame_container</zorder>
+  <zorder>friends_frame_container</zorder>
+  <zorder>statistics_frame_container</zorder>
+  <zorder>user_info_frame_container</zorder>
  </widget>
- <resources>
-  <include location="../icons/user.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

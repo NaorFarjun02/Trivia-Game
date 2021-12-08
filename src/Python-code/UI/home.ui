@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>850</width>
-    <height>600</height>
+    <width>960</width>
+    <height>730</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,8 +21,8 @@ background-color: rgb(54, 54, 54);
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>130</y>
+     <x>290</x>
+     <y>220</y>
      <width>381</width>
      <height>101</height>
     </rect>
@@ -38,8 +38,8 @@ color: rgb(255, 255, 127);</string>
   <widget class="QPushButton" name="playbutton">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>270</y>
+     <x>340</x>
+     <y>360</y>
      <width>261</width>
      <height>41</height>
     </rect>
@@ -56,8 +56,8 @@ letter-spacing:2px;</string>
   <widget class="QPushButton" name="scoretablbutton">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>330</y>
+     <x>340</x>
+     <y>420</y>
      <width>261</width>
      <height>41</height>
     </rect>
@@ -74,7 +74,7 @@ letter-spacing:2px;</string>
   <widget class="QFrame" name="menu">
    <property name="geometry">
     <rect>
-     <x>680</x>
+     <x>790</x>
      <y>30</y>
      <width>101</width>
      <height>121</height>
@@ -155,7 +155,7 @@ border-radius:15px;
   <widget class="QPushButton" name="menubutton">
    <property name="geometry">
     <rect>
-     <x>770</x>
+     <x>880</x>
      <y>20</y>
      <width>71</width>
      <height>51</height>
@@ -182,9 +182,6 @@ _____</string>
   <zorder>scoretablbutton</zorder>
   <zorder>menu</zorder>
  </widget>
- <resources>
-  <include location="user.qrc"/>
-  <include location="shop.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

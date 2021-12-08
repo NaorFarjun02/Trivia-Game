@@ -23,7 +23,7 @@ class CreateAcount(QDialog):
     def __init__(self, widget):
         """init function that set al the main stuff of th page like UI and clicked event"""
         super(CreateAcount, self).__init__()
-        loadUi("Create-account\createaccount.ui", self)  # load the UI of the page
+        loadUi("UI\createaccount.ui", self)  # load the UI of the page
         self.widget = widget
         
         self.confirmpass.returnPressed.connect(
