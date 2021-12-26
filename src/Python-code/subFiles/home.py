@@ -1,8 +1,7 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QApplication, QDialog, QDesktopWidget, QWidget, QMessageBox
 from PyQt5.uic import loadUi
-import global_vers
-
+from module import global_vers, client
 
 class Home(QDialog):
     def __init__(self, widget):
@@ -10,12 +9,14 @@ class Home(QDialog):
         super(Home, self).__init__()
         loadUi("UI\home.ui", self)  # load the UI of the page
         self.widget = widget
-        
+
         self.menu.hide()  # hide the side menu
         self.menubutton.clicked.connect(
             self.show_menu
         )  # click event to the menu button
-        
+        self.scoretablebutton.clicked.connect(
+            self.scoretable
+        )  # click event to the profile button in the menu
         self.profilebutton.clicked.connect(
             self.profile
         )  # click event to the profile button in the menu
@@ -33,7 +34,9 @@ class Home(QDialog):
             self.menu.hide()
 
     def profile(self):
-        global LOGIN_STATUS
+        if global_vers.conn=="":
+            global_vers.create_msgbox("server-error", "no connection         ")
+            return
         if global_vers.LOGIN_STATUS == 0:
             print("you need to login first")
             self.menu.hide()  # hide the side menu
@@ -41,7 +44,11 @@ class Home(QDialog):
         elif global_vers.LOGIN_STATUS == 1:
             print("profile")
             self.widget.setCurrentIndex(global_vers.windows_indexes["profile"])
-
+    def scoretable(self):
+        if global_vers.conn=="":
+            global_vers.create_msgbox("server-error", "no connection         ")
+            return
+        client.gethighscore(global_vers.conn)
     def shop(self):
         print("shop")
 

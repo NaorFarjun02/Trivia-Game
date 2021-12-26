@@ -53,7 +53,7 @@ letter-spacing:2px;</string>
     <string>Play Game</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="scoretablbutton">
+  <widget class="QPushButton" name="scoretablebutton">
    <property name="geometry">
     <rect>
      <x>340</x>
@@ -176,12 +176,17 @@ _____
 _____</string>
    </property>
   </widget>
+  <zorder>scoretablebutton</zorder>
   <zorder>menubutton</zorder>
   <zorder>label</zorder>
   <zorder>playbutton</zorder>
-  <zorder>scoretablbutton</zorder>
   <zorder>menu</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="icons/signal.qrc"/>
+  <include location="icons/arrow.qrc"/>
+  <include location="icons/shop.qrc"/>
+  <include location="icons/user.qrc"/>
+ </resources>
  <connections/>
 </ui>

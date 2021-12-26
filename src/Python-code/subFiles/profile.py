@@ -10,8 +10,9 @@ from PyQt5.QtWidgets import (
     QProgressBar,
 )
 from PyQt5.uic import loadUi
-import global_vers
-from user import User
+
+from module import global_vers, client
+from module.user import User
 import re
 
 achievement_list = {

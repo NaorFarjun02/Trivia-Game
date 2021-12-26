@@ -6,15 +6,17 @@ import re
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication
 
-from user import User
+
 from subFiles.home import Home
 from subFiles.login import Login
 from subFiles.createaccount import CreateAcount
 from subFiles.profile import Profile
-import global_vers
+
+from module import global_vers, client
+from module.user import User
 
 global_vers.LOGIN_STATUS = 0  # in the start the user is not login
-
+global_vers.conn = client.connect()
 
 app = QApplication(sys.argv)  # create the app
 widget = QtWidgets.QStackedWidget()  # create list of all views
@@ -36,3 +38,5 @@ widget.setFixedWidth(960)
 widget.setFixedHeight(730)
 widget.show()
 app.exec_()
+client.logout(global_vers.conn)
+global_vers.conn = ""
