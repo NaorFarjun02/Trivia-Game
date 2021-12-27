@@ -529,10 +529,58 @@ font: 14pt &quot;Calibri&quot;;</string>
     </property>
    </widget>
   </widget>
+  <widget class="QPushButton" name="backbutton">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>10</y>
+     <width>71</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:1px;
+background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="home_back_label">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>10</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(65, 65, 65);
+border-radius:25px;
+border:1px;
+
+padding:3px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::PlainText</enum>
+   </property>
+   <property name="pixmap">
+    <pixmap>icons/home.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
   <zorder>achievements_frame_container</zorder>
   <zorder>friends_frame_container</zorder>
   <zorder>statistics_frame_container</zorder>
   <zorder>user_info_frame_container</zorder>
+  <zorder>home_back_label</zorder>
+  <zorder>backbutton</zorder>
  </widget>
  <resources/>
  <connections/>

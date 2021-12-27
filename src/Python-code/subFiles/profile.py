@@ -35,8 +35,8 @@ class Profile(QDialog):
         self.widget = widget
 
         self.add_coins_button.clicked.connect(self.go_to_shop)
-
-        for achiev in achievement_list.keys():
+        self.backbutton.clicked.connect(self.back_to_home)  # click event to back button
+        for achiev in achievement_list.keys():#create achievements
             self.achievement_frame.addWidget(
                 self.create_achievement_frame(achiev)
             )  # add the achievement to the achievements view
@@ -44,7 +44,8 @@ class Profile(QDialog):
             self.friends_frame.addWidget(
                 self.create_achievement_frame(achiev)
             )  # add the achievement to the achievements view
-
+    def back_to_home(self):
+        self.widget.setCurrentIndex(global_vers.windows_indexes["home"])
     def create_achievement_frame(self, achiev):
         # Frame#
         new_frame = QFrame(

@@ -125,21 +125,21 @@ border:none;
     <string>Don't have an account? Create one</string>
    </property>
   </widget>
-  <widget class="QLabel" name="arrowback_label">
+  <widget class="QLabel" name="home_back_label">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>20</y>
+     <y>10</y>
      <width>51</width>
      <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">
-background-color: rgb(65, 65, 65);
+    <string notr="true">background-color: rgb(65, 65, 65);
 border-radius:25px;
-border:1px solid rgb(255, 255, 127);
-</string>
+border:1px;
+
+padding:3px;</string>
    </property>
    <property name="text">
     <string/>
@@ -148,7 +148,7 @@ border:1px solid rgb(255, 255, 127);
     <enum>Qt::PlainText</enum>
    </property>
    <property name="pixmap">
-    <pixmap>icons/arrow-left.png</pixmap>
+    <pixmap>icons/home.png</pixmap>
    </property>
    <property name="scaledContents">
     <bool>true</bool>
@@ -157,9 +157,9 @@ border:1px solid rgb(255, 255, 127);
   <widget class="QPushButton" name="backbutton">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>61</width>
+     <x>10</x>
+     <y>10</y>
+     <width>71</width>
      <height>51</height>
     </rect>
    </property>
@@ -171,7 +171,7 @@ background: transparent;</string>
     <string/>
    </property>
   </widget>
-  <zorder>arrowback_label</zorder>
+  <zorder>home_back_label</zorder>
   <zorder>label</zorder>
   <zorder>username</zorder>
   <zorder>password</zorder>

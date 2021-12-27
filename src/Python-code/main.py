@@ -16,7 +16,7 @@ from module import global_vers, client
 from module.user import User
 
 global_vers.LOGIN_STATUS = 0  # in the start the user is not login
-global_vers.conn = client.connect()
+
 
 app = QApplication(sys.argv)  # create the app
 widget = QtWidgets.QStackedWidget()  # create list of all views
@@ -38,5 +38,7 @@ widget.setFixedWidth(960)
 widget.setFixedHeight(730)
 widget.show()
 app.exec_()
-client.logout(global_vers.conn)
-global_vers.conn = ""
+
+if str(type(global_vers.conn))=="<class 'socket.socket'>":
+    client.logout(global_vers.conn)
+    global_vers.conn = ""

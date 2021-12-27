@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QApplication, QDialog, QDesktopWidget, QWidget, QMessageBox
+from PyQt5.QtGui import QPixmap
 from PyQt5.uic import loadUi
 from module import global_vers, client
 
@@ -9,7 +10,6 @@ class Home(QDialog):
         super(Home, self).__init__()
         loadUi("UI\home.ui", self)  # load the UI of the page
         self.widget = widget
-
         self.menu.hide()  # hide the side menu
         self.menubutton.clicked.connect(
             self.show_menu
@@ -26,6 +26,7 @@ class Home(QDialog):
         self.settingbutton.clicked.connect(
             self.setting
         )  # click event to the setting button in the menu
+        self.connect_to_server()
 
     def show_menu(self):
         if self.menu.isHidden():
@@ -51,6 +52,22 @@ class Home(QDialog):
         client.gethighscore(global_vers.conn)
     def shop(self):
         print("shop")
-
     def setting(self):
         print("setting")
+
+
+    def connect_to_server(self):
+        try:
+            global_vers.conn = client.connect()#try to connect the server
+
+            pixmap = QPixmap('UI\icons\signal.png')#create connect icon
+            self.connection_icon.setPixmap(pixmap) #set the connection icon to connect  
+
+            self.connection_text.setText("Connected")
+            self.connection_text.setGeometry(30,90,71,20)
+        except:
+            pixmap = QPixmap('UI\icons\\no-signal.png')#create not connect icon
+            self.connection_icon.setPixmap(pixmap)#set the connection icon to not connect
+
+            self.connection_text.setText("Not Connected")
+            self.connection_text.setGeometry(20,90,81,20)

@@ -176,11 +176,73 @@ _____
 _____</string>
    </property>
   </widget>
+  <widget class="QFrame" name="connection_frame">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>131</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QLabel" name="connection_icon">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>40</y>
+      <width>71</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="connection_text">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>90</y>
+      <width>71</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="connection_titel">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>131</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Server connection mode</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+  </widget>
   <zorder>scoretablebutton</zorder>
   <zorder>menubutton</zorder>
   <zorder>label</zorder>
   <zorder>playbutton</zorder>
   <zorder>menu</zorder>
+  <zorder>connection_frame</zorder>
  </widget>
  <resources>
   <include location="icons/signal.qrc"/>
