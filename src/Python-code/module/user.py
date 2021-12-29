@@ -2,9 +2,10 @@ from datetime import datetime
 
 
 class User:
-    def create_date(self):
-        cd = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-        return cd
+    def getUID(self):
+        return self.uid
+    def setUID(self,uid):
+        self.uid=uid
 
     def getEmail(self):
         return self.email
@@ -20,19 +21,22 @@ class User:
         return self.password
     def setPassword(self,password):
         self.password=password
-
+    
     def getDate(self):
         return self.create_date
+    def setData(self,create_date):
+        self.create_date = create_date
     
     def getScore(self):
         return self.score
     def setScore(self,score):
         self.score=score
 
-    def __init__(self, email, username, password,score):
+    def __init__(self,uid=-1,email, username, password,create_data,score=0):
+        self.setUID(uid)
         self.setEmail(email)
         self.setPassword(password)
         self.setUsername(username)
         self.setScore(score)
-        self.create_date = self.create_date()
+        self.setData(create_date)
 

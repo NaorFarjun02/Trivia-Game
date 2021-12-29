@@ -174,7 +174,7 @@ def create_account(conn, user):
     build_and_send_message(
         conn,
         chatlib.PROTOCOL_CLIENT["create_account_msg"],
-        chatlib.join_data([user.getEmail(), user.getUsername(), user.getPassword(), user.getDate(), "0"]),
+        chatlib.join_data([user.getUID(), user.getEmail(), user.getUsername(), user.getPassword(), user.getDate()]),
     )  # send a create account message
     cmd, data = recv_message_and_parse(conn)  # get an answer from the server
     print(data)

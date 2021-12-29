@@ -1,10 +1,11 @@
-##############################################################################
-# server.py
-##############################################################################
+##########################
+#       server.py        #
+##########################
 
 import socket
 import select
 from module import chatlib
+from module.user import User
 import random
 
 
@@ -102,9 +103,7 @@ def load_user_database():
     Returns: user dictionary
     """
     users = {
-        "test": {"password": "test", "score": 40, "questions_asked": []},
-        "yossi": {"password": "123", "score": 50, "questions_asked": []},
-        "master": {"password": "master", "score": 200, "questions_asked": []},
+        "test": {"password": "test","UID":1 "score": 40, "questions_asked": []},
     }
     return users
 
@@ -254,6 +253,7 @@ def handle_createaccount_message(conn, data):
     # global users  # This is needed to access the same users dictionary from all functions
 
     data = chatlib.split_data(data, 5)
+    new_user = User(data[0],data[1],data[2],data[3],data[4])
     if data == None:
         return
     build_and_send_message(
