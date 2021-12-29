@@ -24,6 +24,8 @@ PROTOCOL_CLIENT = {
     "get_logged_users": "LOGGED",
     "get_question": "GET_QUESTION",
     "send_answer": "SEND_ANSWER",
+    "check_email":"CHECK_EMAIL",
+    "check_username":"CHECK_USERNAME",
 }  # .. Add more commands if needed
 
 PROTOCOL_SERVER = {
@@ -36,6 +38,10 @@ PROTOCOL_SERVER = {
     "correct_answer": "CORRECET_ANSWER",
     "wrong_answer": "WRONG_ANSWER",
     "all_score": "ALL_SCORE",
+    "e_un_ok":"E_UN_OK",
+    "email_exists":"EMAIL_EXISTS",
+    "username_exists":"USERNAME_EXISTS",
+    
 }  # ..  Add more commands if needed
 
 # Other constants

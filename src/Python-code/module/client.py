@@ -1,6 +1,7 @@
 import socket
 from module import chatlib
 import sys
+import time
 
 SERVER_IP = "127.0.0.1"  # Our server will run on same computer as client
 SERVER_PORT = 5555
@@ -171,10 +172,14 @@ def logout(conn):
 
 
 def create_account(conn, user):
+
     build_and_send_message(
         conn,
         chatlib.PROTOCOL_CLIENT["create_account_msg"],
         chatlib.join_data([user.getEmail(), user.getUsername(), user.getPassword(), user.getDate()]),
     )  # send a create account message
     cmd, data = recv_message_and_parse(conn)  # get an answer from the server
+    if cmd == chatlib.PROTOCOL_SERVER["failed_msg"] or cmd == chatlib.PROTOCOL_SERVER["email_exists"] or cmd == chatlib.PROTOCOL_SERVER["username_exists"]:#check if a error msg
+        return cmd
+    return data
     print(data)

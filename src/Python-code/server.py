@@ -250,16 +250,53 @@ def handle_login_message(conn, data):
 
 
 def handle_createaccount_message(conn, data):
+    """
+    Gets socket and message data of create account message.
+    Add the user to th users list.
+    Recieves: socket, message data
+    Returns: None (sends answer to client)
+    """
     # global users  # This is needed to access the same users dictionary from all functions
     global users
-    data = chatlib.split_data(data, 4)
-    new_user = User("2",data[0],data[1],data[2],data[3])
+
+    data = chatlib.split_data(data, 4)#slite the data to Email,Username,Password,Create-data
+    if handle_check_email_and_user_message(conn,data[0],data[1]) == 0:#check if the username and email of the new user are exists
+        return
+    new_user = User("2",data[0],data[1],data[2],data[3])#create user object for the new user
     if data == None:
         return
-    users.append(new_user)
+    users.append(new_user)#add the user to the users list
     build_and_send_message(
-        conn, chatlib.PROTOCOL_SERVER["create_account_ok_msg"], str(users)
-    )
+        conn, chatlib.PROTOCOL_SERVER["create_account_ok_msg"], new_user.getUsername()
+    )#send to the client ok msg
+
+def handle_check_email_and_user_message(conn, email,username):
+    """
+    Gets socket and message data of checkif the email and the username are in use of other user.
+    Recieves: socket, message data
+    Returns: None (sends answer to client)
+    """
+    # global users  # This is needed to access the same users dictionary from all functions
+    global users
+    
+    if email == None or username == None:#if get nothig return 0
+        return 0
+    for user in users:
+        if user.getUsername() == username:#check if the username of the new user is exists in the users list
+            build_and_send_message(
+                conn, chatlib.PROTOCOL_SERVER["username_exists"],""
+            )#send username error msg to the client
+            return 0
+        if user.getEmail() == email:#check if the email of the new user is exists in the users list
+            build_and_send_message(
+                conn, chatlib.PROTOCOL_SERVER["email_exists"],""
+            )#send email error msg to the client
+            return 0
+    build_and_send_message(
+        conn, chatlib.PROTOCOL_SERVER["e_un_ok"], ""
+    )#send usrnmane and email ok msg to the client
+    return 1
+
 
 
 def handle_client_message(conn, cmd, data):
@@ -293,6 +330,7 @@ def handle_client_message(conn, cmd, data):
             handle_question_message(conn)
         elif cmd == chatlib.PROTOCOL_CLIENT["send_answer"]:
             handle_answer_message(conn, logged_users[conn.getpeername()], data)
+        
         else:
             send_error(conn, chatlib.PROTOCOL_SERVER["failed_msg"])
 
