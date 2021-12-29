@@ -20,10 +20,10 @@ def login_func(username, password):
     """
     client.USERNAME = username
     client.PASSWORD = password
-    login_status =client.login(global_vers.conn)
+    data,login_status =client.login(global_vers.conn)
     if login_status == client.OK:
-        return True, login_status
-    return False, None
+        return True, login_status,data
+    return False, None,data
 
 
 class Login(QDialog):
@@ -52,7 +52,7 @@ class Login(QDialog):
             return
         username = self.username.text()
         password = self.password.text()
-        login_status, user = login_func(
+        login_status, user,data = login_func(
             self.username.text(), self.password.text()
         )  # check if the user is exists
         if login_status == True:
@@ -65,8 +65,8 @@ class Login(QDialog):
             self.widget.setCurrentIndex(global_vers.windows_indexes["home"])
         else:
             # if the user is don't exists, msg box tell the user that something wrong
-            global_vers.create_msgbox("error", "Username or password incorrect")
-            print("Can't connect to the server")
+            global_vers.create_msgbox("error", data)
+            print("Can't login to the server")
             self.username.setText("")
             self.password.setText("")
 

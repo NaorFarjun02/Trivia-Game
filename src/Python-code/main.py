@@ -1,4 +1,3 @@
-#the main file in the client side#
 
 import sys
 import socket

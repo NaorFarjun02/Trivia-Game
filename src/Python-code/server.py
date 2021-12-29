@@ -102,9 +102,8 @@ def load_user_database():
     Recieves: -
     Returns: user dictionary
     """
-    users = {
-        "test": {"password": "test","UID":1 "score": 40, "questions_asked": []},
-    }
+    test_user=User(0,"naor_test@gmail.com","test","test","8/11/2002 04:00:00")#user for test
+    users = [test_user]#the list of all user
     return users
 
 
@@ -228,22 +227,23 @@ def handle_login_message(conn, data):
     if data == None:
         return
     login_status = 0
-    if data[0] in users.keys():
-        if conn.getpeername() not in logged_users.keys():
-            if data[1] == users[data[0]]["password"]:
-                login_status = 1
-                build_and_send_message(
-                    conn, chatlib.PROTOCOL_SERVER["login_ok_msg"], ""
-                )
+    for user in users:
+        if data[0] == user.getUsername():
+            if data[0] not in logged_users.values():
+                if data[1] == user.getPassword():
+                    login_status = 1
+                    build_and_send_message(
+                        conn, chatlib.PROTOCOL_SERVER["login_ok_msg"], ""
+                    )
+                else:
+                    login_status = -1
+                    send_error(conn, "Username or password incorrect")
             else:
                 login_status = -1
-                send_error(conn, "Username or password incorrect")
+                send_error(conn, "This user is already logged in to the game")
         else:
             login_status = -1
-            send_error(conn, "This user is already logged in to the game")
-    else:
-        login_status = -1
-        send_error(conn, "Username or password incorrect")
+            send_error(conn, "Username or password incorrect")
     if login_status == 1:
         logged_users[conn.getpeername()] = data[0]
         return data[0]
@@ -251,13 +251,14 @@ def handle_login_message(conn, data):
 
 def handle_createaccount_message(conn, data):
     # global users  # This is needed to access the same users dictionary from all functions
-
-    data = chatlib.split_data(data, 5)
-    new_user = User(data[0],data[1],data[2],data[3],data[4])
+    global users
+    data = chatlib.split_data(data, 4)
+    new_user = User("2",data[0],data[1],data[2],data[3])
     if data == None:
         return
+    users.append(new_user)
     build_and_send_message(
-        conn, chatlib.PROTOCOL_SERVER["create_account_ok_msg"], str(data)
+        conn, chatlib.PROTOCOL_SERVER["create_account_ok_msg"], str(users)
     )
 
 

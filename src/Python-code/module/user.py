@@ -1,5 +1,3 @@
-from datetime import datetime
-
 
 class User:
     def getUID(self):
@@ -32,11 +30,11 @@ class User:
     def setScore(self,score):
         self.score=score
 
-    def __init__(self,uid=-1,email, username, password,create_data,score=0):
+    def __init__(self,uid,email, username, password,create_data,score=0):
         self.setUID(uid)
         self.setEmail(email)
         self.setPassword(password)
         self.setUsername(username)
         self.setScore(score)
-        self.setData(create_date)
+        self.setData(create_data)
 

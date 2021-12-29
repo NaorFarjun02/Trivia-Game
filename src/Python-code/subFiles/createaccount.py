@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QApplication, QDialog, QDesktopWidget, QWidget, QMes
 from PyQt5.uic import loadUi
 from module import global_vers, client
 from module.user import User
+from datetime import datetime
 
 import re
 
@@ -96,7 +97,7 @@ class CreateAcount(QDialog):
                 )
                 return 0
             new_user = User(
-                self.email.text(), self.username.text(), self.password.text(), 0
+                0,self.email.text(), self.username.text(), self.password.text(),datetime.now().strftime("%d/%m/%Y %H:%M:%S"), 0
             )
             if global_vers.conn == "":
                 global_vers.create_msgbox("server-error", "no connection         ")
