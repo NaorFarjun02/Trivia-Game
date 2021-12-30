@@ -14,7 +14,10 @@ class CreateAcount(QDialog):
         super(CreateAcount, self).__init__()
         loadUi("UI\createaccount.ui", self)  # load the UI of the page
         self.widget = widget
-
+        self.setTabOrder(self.email,self.username)
+        self.setTabOrder(self.username,self.password)
+        self.setTabOrder(self.password,self.confirmpass)
+        self.setTabOrder(self.confirmpass,self.singupbutton)
         self.confirmpass.returnPressed.connect(
             self.create_account_func
         )  # enter event to confirmed password filed
