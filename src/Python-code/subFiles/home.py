@@ -49,7 +49,10 @@ class Home(QDialog):
         if global_vers.conn=="":
             global_vers.create_msgbox("server-error", "no connection         ")
             return
-        client.gethighscore(global_vers.conn)
+        elif global_vers.LOGIN_STATUS == 0:
+            global_vers.create_msgbox("server-error", "you need to login first ")
+            return
+        score_list=client.gethighscore(global_vers.conn)
     def shop(self):
         print("shop")
     def setting(self):

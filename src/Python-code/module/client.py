@@ -1,7 +1,8 @@
 import socket
-from module import chatlib
+from module import chatlib,global_vers
 import sys
 import time
+import pickle
 
 SERVER_IP = "127.0.0.1"  # Our server will run on same computer as client
 SERVER_PORT = 5555
@@ -35,7 +36,7 @@ def build_and_send_message(conn, code, data):
     conn.send(full_msg.encode())
 
 
-def recv_message_and_parse(conn):
+def recv_message_and_parse(conn,is_user_data=False):
     """
     Recieves a new message from given socket,
     then parses the message using chatlib.
@@ -43,9 +44,24 @@ def recv_message_and_parse(conn):
     Returns: cmd (str) and data (str) of the received message.
     If error occured, will return None, None
     """
-    full_msg = conn.recv(1024).decode()
-    cmd, data = chatlib.parse_message(full_msg)
-    return cmd, data
+    if is_user_data == False:
+        full_msg = conn.recv(1024).decode()
+        cmd, data = chatlib.parse_message(full_msg)
+        return cmd, data
+    else:
+        msg=conn.recv(1024)
+        # if "This user is already logged in to the game" in msg
+        try:
+            user=pickle.loads(msg)
+            if str(type(user))!="<class 'module.user.User'>":
+                return chatlib.PROTOCOL_SERVER["failed_msg"],""
+            cmd, data = chatlib.PROTOCOL_SERVER["login_ok_msg"],user
+            return cmd, data
+        except pickle.UnpicklingError:
+            cmd, data = chatlib.parse_message(msg)
+            return cmd, data
+        except:
+            return chatlib.PROTOCOL_SERVER["failed_msg"],""
 
 
 def bulid_send_recv_parse(conn, code, data):
@@ -81,6 +97,7 @@ def gethighscore(conn):
         conn, chatlib.PROTOCOL_CLIENT["get_highscore"], ""
     )
     print(data)
+    return data
 
 
 def print_question(data):
@@ -153,8 +170,10 @@ def login(conn):
         except Message_too_long:
             return ERROR
 
-        cmd, data = recv_message_and_parse(conn)  # get an answer ffrom the server
+        cmd, data = recv_message_and_parse(conn,True)  # get an answer ffrom the server
         if cmd == chatlib.PROTOCOL_SERVER["login_ok_msg"]:
+            global_vers.user = data
+            print(global_vers.user)
             print("Login successfully")
         elif cmd == chatlib.PROTOCOL_SERVER["failed_msg"]:
             print(data)

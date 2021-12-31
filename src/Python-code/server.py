@@ -4,9 +4,11 @@
 
 import socket
 import select
+import random
+import pickle
 from module import chatlib
 from module.user import User
-import random
+
 
 
 # GLOBALS
@@ -39,6 +41,22 @@ def build_and_send_message(conn, code, msg):
     except:
         return
 
+def build_and_send_user_data(conn, code, user):
+    """
+    Builds a new message using chatlib, wanted code and message.
+    Prints debug info, then sends it to the given socket.
+    Paramaters: conn (socket object), code (str), data (str)
+    Returns: Nothing
+    """
+    global messages_to_send
+    user_as_str=pickle.dumps(user)
+    try:
+        if code == chatlib.PROTOCOL_SERVER["login_ok_msg"]:
+            full_msg =user_as_str
+            conn.send(full_msg)
+            print("[SERVER] ", full_msg)  # Debug print
+    except:
+        return
 
 def recv_message_and_parse(conn):
     """
@@ -102,7 +120,7 @@ def load_user_database():
     Recieves: -
     Returns: user dictionary
     """
-    test_user=User(0,"naor_test@gmail.com","test","test","8/11/2002 04:00:00")#user for test
+    test_user=User(0,"naor_test@gmail.com","test","test","8/11/2002 04:00:00",9999)#user for test
     users = [test_user]#the list of all user
     return users
 
@@ -159,8 +177,8 @@ def handle_highscore_message(conn):
 
     global users
     score_table = []
-    for user in users.keys():
-        user_score = [user, users[user]["score"]]
+    for user in users:
+        user_score = [user.getUsername(), user.getScore()]
         score_table.append(user_score)
     score_table.sort(key=takeSecond, reverse=True)
     msg = ""
@@ -232,8 +250,8 @@ def handle_login_message(conn, data):
             if data[0] not in logged_users.values():
                 if data[1] == user.getPassword():
                     login_status = 1
-                    build_and_send_message(
-                        conn, chatlib.PROTOCOL_SERVER["login_ok_msg"], ""
+                    build_and_send_user_data(
+                        conn, chatlib.PROTOCOL_SERVER["login_ok_msg"], user
                     )
                 else:
                     login_status = -1
@@ -260,7 +278,7 @@ def handle_createaccount_message(conn, data):
     global users
 
     data = chatlib.split_data(data, 4)#slite the data to Email,Username,Password,Create-data
-    if handle_check_email_and_user_message(conn,data[0],data[1]) == 0:#check if the username and email of the new user are exists
+    if check_email_and_user_message(conn,data[0],data[1]) == 0:#check if the username and email of the new user are exists
         return
     new_user = User("2",data[0],data[1],data[2],data[3])#create user object for the new user
     if data == None:
@@ -270,7 +288,7 @@ def handle_createaccount_message(conn, data):
         conn, chatlib.PROTOCOL_SERVER["create_account_ok_msg"], new_user.getUsername()
     )#send to the client ok msg
 
-def handle_check_email_and_user_message(conn, email,username):
+def check_email_and_user_message(conn, email,username):
     """
     Gets socket and message data of checkif the email and the username are in use of other user.
     Recieves: socket, message data

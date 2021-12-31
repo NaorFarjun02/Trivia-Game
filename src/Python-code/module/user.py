@@ -38,3 +38,5 @@ class User:
         self.setScore(score)
         self.setData(create_data)
 
+    def __str__(self):
+        return "username:" + self.getUsername() + "\nemail:"+self.getEmail() + "\ncreate date:" + self.getDate()

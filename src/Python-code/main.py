@@ -42,4 +42,5 @@ app.exec_()
 
 if str(type(global_vers.conn))=="<class 'socket.socket'>":
     client.logout(global_vers.conn)
+    global_vers.user=None
     global_vers.conn = ""

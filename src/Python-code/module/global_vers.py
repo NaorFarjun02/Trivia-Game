@@ -16,6 +16,7 @@ windows_indexes = {
     "settings": 27,
 }  # A list of all the indexes of each page
 
+user=None
 
 def create_msgbox(title, text):
     """create msg box
