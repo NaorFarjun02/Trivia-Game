@@ -14,10 +14,7 @@ class CreateAcount(QDialog):
         super(CreateAcount, self).__init__()
         loadUi("UI\createaccount.ui", self)  # load the UI of the page
         self.widget = widget
-        self.setTabOrder(self.email,self.username)
-        self.setTabOrder(self.username,self.password)
-        self.setTabOrder(self.password,self.confirmpass)
-        self.setTabOrder(self.confirmpass,self.singupbutton)
+        self.set_tab_order()
         self.confirmpass.returnPressed.connect(
             self.create_account_func
         )  # enter event to confirmed password filed
@@ -33,7 +30,11 @@ class CreateAcount(QDialog):
         self.backbutton.clicked.connect(
             self.back_to_login
         )  # click event to back button
-
+    def set_tab_order(self):
+        self.setTabOrder(self.email,self.username)
+        self.setTabOrder(self.username,self.password)
+        self.setTabOrder(self.password,self.confirmpass)
+        self.setTabOrder(self.confirmpass,self.singupbutton)
     def create_account_func(self):
         """
             the function includ all functions that are need for create an account
