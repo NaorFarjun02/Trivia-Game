@@ -39,7 +39,7 @@ class Profile(QDialog):
 			)  # add the achievement to the achievements view
 		if global_vers.LOGIN_STATUS == 1:
 			self.username_label.setText(global_vers.user_data.getUsername())
-			self.uid_label.setText("UID - " + global_vers.user_data.getUID())
+			self.uid_label.setText("UID - " + global_vers.user_data.getUID().zfill(8))
 	
 	def back_to_home(self):
 		self.widget.setCurrentIndex(global_vers.windows_indexes [ "home" ])
