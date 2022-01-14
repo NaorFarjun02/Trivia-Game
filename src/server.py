@@ -228,7 +228,6 @@ def handle_logout_message(conn):
 	global logged_users
 	
 	logged_users.pop(conn.getpeername())
-	conn.close()
 
 
 def handle_login_message(conn, data):
@@ -380,12 +379,13 @@ def main():
 			else:
 				cmd, data = recv_message_and_parse(current_socket)
 				if cmd == chatlib.PROTOCOL_CLIENT [ "logout_msg" ] or cmd == None:
-					print(f"Client disconnect| username={data}")
+					print(f"Client disconnect| username={data}, connection={current_socket}")
 					if cmd != None:
 						handle_client_message(current_socket, cmd, data)
 					else:
 						client_sockets.remove(current_socket)
-						logged_users = {key: val for key, val in logged_users.items() if val != data}
+						logged_users = {key: val for key, val in logged_users.items() if
+						                key != current_socket.getpeername()}
 						current_socket.close()
 						continue
 					client_sockets.remove(current_socket)
