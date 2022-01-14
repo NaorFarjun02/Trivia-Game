@@ -59,6 +59,7 @@ class Home(QDialog):
 			client.logout(global_vers.server_connection)
 			global_vers.user_data = None
 			global_vers.LOGIN_STATUS = 0
+			self.show_logout_btn()
 			global_vers.server_connection = None
 			home = Home(self.widget)  # home page
 			self.widget.insertWidget(global_vers.windows_indexes [ "home" ], home)
@@ -97,18 +98,17 @@ class Home(QDialog):
 		print("setting")
 	
 	def connect_to_server(self):
-		if global_vers.server_connection != None or global_vers.LOGIN_STATUS == 0:
-			try:
-				global_vers.server_connection = client.connect()  # try to connect the server
-				
-				pixmap = QPixmap('UI\icons\signal.png')  # create connect icon
-				self.connection_icon.setPixmap(pixmap)  # set the connection icon to connect
-				
-				self.connection_text.setText("Connected")
-				self.connection_text.setGeometry(30, 90, 71, 20)
-			except:
-				pixmap = QPixmap('UI\icons\\no-signal.png')  # create not connect icon
-				self.connection_icon.setPixmap(pixmap)  # set the connection icon to not connect
-				
-				self.connection_text.setText("Not Connected")
-				self.connection_text.setGeometry(20, 90, 81, 20)
+		try:
+			global_vers.server_connection = client.connect()  # try to connect the server
+			
+			pixmap = QPixmap('UI\icons\signal.png')  # create connect icon
+			self.connection_icon.setPixmap(pixmap)  # set the connection icon to connect
+			
+			self.connection_text.setText("Connected")
+			self.connection_text.setGeometry(30, 90, 71, 20)
+		except:
+			pixmap = QPixmap('UI\icons\\no-signal.png')  # create not connect icon
+			self.connection_icon.setPixmap(pixmap)  # set the connection icon to not connect
+			
+			self.connection_text.setText("Not Connected")
+			self.connection_text.setGeometry(20, 90, 81, 20)

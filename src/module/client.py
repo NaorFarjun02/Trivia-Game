@@ -187,7 +187,6 @@ def logout(conn):
 		conn, chatlib.PROTOCOL_CLIENT [ "logout_msg" ], USERNAME
 	)  # send a logout message
 	cmd, data = recv_message_and_parse(conn)  # get an answer from the server
-	print(data)
 
 
 def create_account(conn, user):
