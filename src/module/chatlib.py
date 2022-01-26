@@ -38,6 +38,7 @@ PROTOCOL_SERVER = {
 	"correct_answer": "CORRECET_ANSWER",
 	"wrong_answer": "WRONG_ANSWER",
 	"all_score": "ALL_SCORE",
+	"msg_len": "MSG_LENGTH",
 	"e_un_ok": "E_UN_OK",
 	"email_exists": "EMAIL_EXISTS",
 	"username_exists": "USERNAME_EXISTS",

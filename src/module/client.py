@@ -1,7 +1,9 @@
 import pickle
 import socket
+import time
 
 from module import chatlib, global_vers
+from module.score_table import Score_table
 
 SERVER_IP = "127.0.0.1"  # Our server will run on same computer as client
 SERVER_PORT = 5555
@@ -94,11 +96,24 @@ def gethighscore(conn):
 	Paramaters: conn (socket object)
 	Returns: Nothing
 	"""
-	cmd, data = bulid_send_recv_parse(
-		conn, chatlib.PROTOCOL_CLIENT [ "get_highscore" ], ""
-	)
-	print(data)
-	return data
+	build_and_send_message(conn, chatlib.PROTOCOL_CLIENT [ "get_highscore" ], "")
+	msg = conn.recv(1024)
+	# if "This user is already logged in to the game" in msg
+	try:
+		table_list = pickle.loads(msg)
+		# if str(type(table_list)) != "<class '__main__.Score_table'>":
+		# 	return chatlib.PROTOCOL_SERVER [ "failed_msg" ], ""
+		cmd, data = chatlib.PROTOCOL_SERVER [ "all_score" ], table_list
+		return cmd, data
+	except pickle.UnpicklingError:
+		msg = msg.decode()
+		cmd, data = chatlib.parse_message(msg)
+		return cmd, data
+	except:
+		return chatlib.PROTOCOL_SERVER [ "failed_msg" ], ""
+
+
+# return data
 
 
 def print_question(data):

@@ -6,9 +6,11 @@ import pickle
 import random
 import select
 import socket
+import time
 
 from module import chatlib
 from module.user import User
+from module.score_table import Score_table
 
 # GLOBALS
 messages_to_send = [ ]
@@ -121,9 +123,10 @@ def load_user_database():
 	Recieves: -
 	Returns: user dictionary
 	"""
+	global users
 	test_user = User(1, "naor_test@gmail.com", "test", "test", "8/11/2002 04:00:00", 9999)  # user for test
-	users = [ test_user ]  # the list of all user
-	return users
+	master_user = User(99999999, "master@gmail.com", "master", "master", "1/1/1999 04:00:00", 99999999)  # user for test
+	users = [ test_user, master_user ]  # the list of all user
 
 
 # SOCKET CREATOR
@@ -176,15 +179,13 @@ def takeSecond(elem):
 
 def handle_highscore_message(conn):
 	global users
-	score_table = [ ]
+	score_table = Score_table()
 	for user in users:
-		user_score = [ user.getUsername(), user.getScore() ]
-		score_table.append(user_score)
-	score_table.sort(key=takeSecond, reverse=True)
-	msg = ""
-	for score in score_table:
-		msg += score [ 0 ] + ": " + str(score [ 1 ]) + "\n"
-	build_and_send_message(conn, chatlib.PROTOCOL_SERVER [ "all_score" ], msg)
+		score_table.add_user_to_list(user)
+	msg = pickle.dumps(score_table)
+	# build_and_send_message(conn, chatlib.PROTOCOL_SERVER [ "msg_len" ], str(len(msg)))
+	conn.send(msg)
+	print("score table length: " + str(len(msg)))
 
 
 def create_ramdon_quetion():
@@ -252,15 +253,15 @@ def handle_login_message(conn, data):
 					build_and_send_user_data(
 						conn, chatlib.PROTOCOL_SERVER [ "login_ok_msg" ], user
 					)
+					break
 				else:
 					login_status = -1
 					send_error(conn, "Username or password incorrect")
+					break
 			else:
 				login_status = -1
 				send_error(conn, "This user is already logged in to the game")
-		else:
-			login_status = -1
-			send_error(conn, "Username or password incorrect")
+				break
 	if login_status == 1:
 		logged_users [ conn.getpeername() ] = data [ 0 ]
 		return data [ 0 ]
@@ -280,13 +281,15 @@ def handle_createaccount_message(conn, data):
 	if check_email_and_user_message(conn, data [ 0 ],
 	                                data [ 1 ]) == 0:  # check if the username and email of the new user are exists
 		return
-	new_user = User("2", data [ 0 ], data [ 1 ], data [ 2 ], data [ 3 ])  # create user object for the new user
+	new_user = User(len(users) + 1, data [ 0 ], data [ 1 ], data [ 2 ],
+	                data [ 3 ])  # create user object for the new user
 	if data == None:
 		return
 	users.append(new_user)  # add the user to the users list
 	build_and_send_message(
 		conn, chatlib.PROTOCOL_SERVER [ "create_account_ok_msg" ], new_user.getUsername()
 	)  # send to the client ok msg
+	print(users)
 
 
 def check_email_and_user_message(conn, email, username):
@@ -361,7 +364,7 @@ def main():
 	global logged_users
 	# global logged_users
 	
-	users = load_user_database()
+	load_user_database()
 	questions = load_questions()
 	print("Welcome to Trivia Server!")
 	print("Setting up server.....")

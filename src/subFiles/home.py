@@ -61,6 +61,7 @@ class Home(QDialog):
 			global_vers.LOGIN_STATUS = 0
 			self.show_logout_btn()
 			global_vers.server_connection = None
+			self.widget.removeWidget(self.widget.widget(global_vers.windows_indexes [ "home" ]))
 			home = Home(self.widget)  # home page
 			self.widget.insertWidget(global_vers.windows_indexes [ "home" ], home)
 			self.widget.setCurrentIndex(global_vers.windows_indexes [ "home" ])
@@ -72,24 +73,29 @@ class Home(QDialog):
 		if global_vers.LOGIN_STATUS == 0:
 			print("you need to login first")
 			self.menu.hide()  # hide the side menu
-			
+			self.widget.removeWidget(self.widget.widget(global_vers.windows_indexes [ "login" ]))
 			login = Login(self.widget)  # login page
 			self.widget.insertWidget(global_vers.windows_indexes [ "login" ], login)
 			self.widget.setCurrentIndex(global_vers.windows_indexes [ "login" ])
 		elif global_vers.LOGIN_STATUS == 1:
 			print("profile")
+			self.widget.removeWidget(self.widget.widget(global_vers.windows_indexes [ "profile" ]))
 			profile = Profile(self.widget)  # profile page
 			self.widget.insertWidget(global_vers.windows_indexes [ "profile" ], profile)
 			self.widget.setCurrentIndex(global_vers.windows_indexes [ "profile" ])
 	
 	def scoretable(self):
+		print(f"logint satus : {global_vers.LOGIN_STATUS}")
 		if global_vers.server_connection == None:
 			global_vers.create_msgbox("server-error", "no connection         ")
 			return
 		elif global_vers.LOGIN_STATUS == 0:
 			global_vers.create_msgbox("server-error", "you need to login first ")
 			return
-		score_list = client.gethighscore(global_vers.server_connection)
+		elif global_vers.LOGIN_STATUS == 1:
+			self.widget.widget(global_vers.windows_indexes [ "scoretable" ]).requet_data_from_server()
+			self.widget.widget(global_vers.windows_indexes [ "scoretable" ]).loadDataToTable()
+			self.widget.setCurrentIndex(global_vers.windows_indexes [ "scoretable" ])
 	
 	def shop(self):
 		print("shop")

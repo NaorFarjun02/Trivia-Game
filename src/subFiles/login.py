@@ -68,6 +68,7 @@ class Login(QDialog):
 			password = self.password.setText("")
 			login_status = False
 			
+			self.widget.removeWidget(self.widget.widget(global_vers.windows_indexes [ "profile" ]))
 			profile = Profile(self.widget)  # profile page
 			self.widget.insertWidget(global_vers.windows_indexes [ "profile" ], profile)
 			self.widget.setCurrentIndex(global_vers.windows_indexes [ "profile" ])

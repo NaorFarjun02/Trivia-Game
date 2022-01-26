@@ -10,6 +10,7 @@ from subFiles.createaccount import CreateAcount
 from subFiles.home import Home
 from subFiles.login import Login
 from subFiles.profile import Profile
+from subFiles.scoretable import ScoreTable
 
 global_vers.LOGIN_STATUS = 0  # in the start the user is not login
 
@@ -26,7 +27,10 @@ create_account = CreateAcount(widget)  # create account page
 widget.insertWidget(global_vers.windows_indexes [ "create" ], create_account)
 
 profile = Profile(widget)  # profile page
-widget.insertWidget(global_vers.windows_indexes [ "profile" ], Profile(widget))
+widget.insertWidget(global_vers.windows_indexes [ "profile" ], profile)
+
+score_table = ScoreTable(widget)
+widget.insertWidget(global_vers.windows_indexes [ "scoretable" ], score_table)
 
 widget.setCurrentIndex(0)
 widget.setFixedWidth(960)
