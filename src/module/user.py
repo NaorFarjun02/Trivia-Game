@@ -32,6 +32,9 @@ class User:
 	def getScore(self):
 		return self.score
 	
+	def updateScore(self, new_points=0):
+		self.score += new_points
+	
 	def setScore(self, score):
 		self.score = score
 	

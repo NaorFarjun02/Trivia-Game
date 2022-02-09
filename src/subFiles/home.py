@@ -1,10 +1,12 @@
+import time
+
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QDialog
 from PyQt5.uic import loadUi
 
 from module import global_vers, client
-from subFiles.profile import Profile
 from subFiles.login import Login
+from subFiles.profile import Profile
 
 
 class Home(QDialog):
@@ -16,25 +18,15 @@ class Home(QDialog):
 		self.show_logout_btn()
 		self.menu.hide()  # hide the side menu
 		
-		self.menubutton.clicked.connect(
-			self.show_menu
-		)  # click event to the menu button
-		self.scoretablebutton.clicked.connect(
-			self.scoretable
-		)  # click event to the profile button in the menu
-		self.profilebutton.clicked.connect(
-			self.profile
-		)  # click event to the profile button in the menu
-		self.shopbutton.clicked.connect(
-			self.shop
-		)  # click event to the shop button in the menu
-		self.settingbutton.clicked.connect(
-			self.setting
-		)  # click event to the setting button in the menu
+		self.menubutton.clicked.connect(self.show_menu)  # click event to the menu button
+		self.playbutton.clicked.connect(self.playgame)  # click event to the play game
+		self.scoretablebutton.clicked.connect(self.scoretable)  # click event to the score table
+		self.profilebutton.clicked.connect(self.profile)  # click event to the profile button in the menu
+		self.shopbutton.clicked.connect(self.shop)  # click event to the shop button in the menu
+		self.settingbutton.clicked.connect(self.setting)  # click event to the setting button in the menu
 		
-		self.logoutbutton.clicked.connect(
-			self.logout
-		)
+		self.logoutbutton.clicked.connect(self.logout)
+		self.connection_frame_button.clicked.connect(self.reconnect)
 		
 		self.connect_to_server()
 	
@@ -93,15 +85,33 @@ class Home(QDialog):
 			global_vers.create_msgbox("server-error", "you need to login first ")
 			return
 		elif global_vers.LOGIN_STATUS == 1:
-			self.widget.widget(global_vers.windows_indexes [ "scoretable" ]).requet_data_from_server()
 			self.widget.widget(global_vers.windows_indexes [ "scoretable" ]).loadDataToTable()
 			self.widget.setCurrentIndex(global_vers.windows_indexes [ "scoretable" ])
+	
+	def playgame(self):
+		if global_vers.server_connection == None:
+			global_vers.create_msgbox("server-error", "no connection         ")
+			return
+		elif global_vers.LOGIN_STATUS == 0:
+			global_vers.create_msgbox("server-error", "you need to login first ")
+			return
+		elif global_vers.LOGIN_STATUS == 1:
+			if self.widget.widget(global_vers.windows_indexes [ "game" ]).get_question_from_server() == None:
+				return
+			
+			self.widget.widget(global_vers.windows_indexes [ "game" ]).start_to_play()
+			self.widget.widget(global_vers.windows_indexes [ "game" ]).set_timer()
+			time.sleep(1)
+			self.widget.setCurrentIndex(global_vers.windows_indexes [ "game" ])
 	
 	def shop(self):
 		print("shop")
 	
 	def setting(self):
 		print("setting")
+	
+	def reconnect(self):
+		self.connect_to_server()
 	
 	def connect_to_server(self):
 		try:
@@ -113,6 +123,8 @@ class Home(QDialog):
 			self.connection_text.setText("Connected")
 			self.connection_text.setGeometry(30, 90, 71, 20)
 		except:
+			global_vers.LOGIN_STATUS = 0
+			global_vers.server_connection = None
 			pixmap = QPixmap('UI\icons\\no-signal.png')  # create not connect icon
 			self.connection_icon.setPixmap(pixmap)  # set the connection icon to not connect
 			

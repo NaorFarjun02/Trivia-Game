@@ -116,27 +116,26 @@ def gethighscore(conn):
 # return data
 
 
-def print_question(data):
-	data = chatlib.split_data(data, 7)
-	print()
-	print("Q: " + data [ 1 ])
-	for i in range(2, 6):
-		print("|%s|   %s" % (str(i - 1), data [ i ]))
-	return data [ 0 ]
-
-
-def play_question(conn):
+def get_question(conn):
 	"""
-	Requests a question from the server, prints the question,
+		Requests a question from the server, prints the question,
+		Paramaters: conn (socket object)
+		Returns: Nothing
+		"""
+	cmd, data = bulid_send_recv_parse(conn, chatlib.PROTOCOL_CLIENT [ "get_question" ], "")
+	if cmd == chatlib.PROTOCOL_SERVER [ "not_login" ] or cmd == chatlib.PROTOCOL_SERVER [ "failed_msg" ]:
+		global_vers.create_msgbox("error", cmd)
+		return None
+	return chatlib.split_data(data, 7)
+
+
+def play_question(conn, question_id, player_choise):
+	"""
 	gets an answer from the user, prints whether right or not and the correct answer
 	Paramaters: conn (socket object)
 	Returns: Nothing
 	"""
-	cmd, data = bulid_send_recv_parse(conn, chatlib.PROTOCOL_CLIENT [ "get_question" ], "")
-	question_id = print_question(data)
-	player_choise = ""
-	while player_choise not in [ "1", "2", "3", "4" ]:
-		player_choise = str(input("Please enter your choice: "))
+	
 	cmd, data = bulid_send_recv_parse(
 		conn,
 		chatlib.PROTOCOL_CLIENT [ "send_answer" ],
@@ -144,8 +143,10 @@ def play_question(conn):
 	)
 	if data == "":
 		print("YES!!!")
+		return True
 	elif len(data) == 1:
 		print("Nope, correct answer is |%s|" % data)
+		return data
 
 
 def get_logged_users(conn):

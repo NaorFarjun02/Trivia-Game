@@ -6,7 +6,7 @@ import pickle
 import random
 import select
 import socket
-import time
+import threading
 
 from module import chatlib
 from module.user import User
@@ -22,6 +22,8 @@ ERROR_MSG = "Error! "
 SERVER_PORT = 5555
 SERVER_IP = "0.0.0.0"
 MAX_MSG_LENGTH = 1024
+
+exit_event = threading.Event()
 
 
 # HELPER SOCKET METHODS
@@ -94,13 +96,13 @@ def load_questions():
 	"""
 	questions = {
 		1: {
-			"question": "How much is 2+2",
+			"question": "How much is 2+2?",
 			"answers": [ "3", "4", "2", "1" ],
 			"correct": 2,
 		},
 		2: {
 			"question": "What is the capital of France?",
-			"answers": [ "Lion", "Marseille", "Paris", "Montpellier" ],
+			"answers": [ "Marseille", "Lion", "Paris", "Montpellier" ],
 			"correct": 3,
 		},
 		3: {
@@ -113,6 +115,85 @@ def load_questions():
 			"answers": [ "26", "32", "43", "23" ],
 			"correct": 1,
 		},
+		5: {
+			'question': 'In a bingo game, which number is represented by the phrase “two little ducks”?',
+			'answers': [ '33', '55', '99', '22' ],
+			'correct': 4
+		},
+		6: {
+			'question': 'In which European city would you find Orly airport?',
+			'answers': [ 'Paris', 'Madrid', 'London', 'Lion' ],
+			'correct': 1
+		},
+		7: {
+			'question': 'How many ribs are in a human body?',
+			'answers': [ '12', '23', '21', '24' ],
+			'correct': 4
+		},
+		8: {
+			'question': 'What color eyes do most humans have?',
+			'answers': [ 'Yellow', 'Brown', 'Blue', 'Red' ],
+			'correct': 2
+		},
+		9: {
+			'question': 'When Michael Jordan played for the Chicago Bulls, how many NBA Championships did he win?',
+			'answers': [ '9', '7', '6', '15' ],
+			'correct': 3
+		},
+		10: {
+			'question': 'In what year was the first-ever Wimbledon Championship held?',
+			'answers': [ '1999', '1877', '1876', '1878' ],
+			'correct': 2
+		},
+		11: {
+			'question': 'Which country produces the most coffee in the world?',
+			'answers': [ 'Brazil', 'Uruguay', 'Israel', 'Yemen' ],
+			'correct': 1
+		},
+		12: {
+			'question': 'What country won the very first FIFA World Cup in 1930?',
+			'answers': [ 'Yemen', 'Brazil', 'Uruguay', 'France' ],
+			'correct': 3
+		},
+		13: {
+			'question': 'How many hearts does an octopus have?',
+			'answers': [ '9', '4', '3', '1' ],
+			'correct': 3
+		},
+		14: {
+			'question': 'Water has a pH level of around?',
+			'answers': [ '8', '4', '6', '7' ],
+			'correct': 4
+		},
+		15: {
+			'question': 'What color is Absinthe?',
+			'answers': [ 'Green', 'Black', 'Red', 'Blue' ],
+			'correct': 1
+		},
+		16: {
+			'question': 'How many children does Oprah Winfrey have?',
+			'answers': [ '20', '0', '3', '80' ],
+			'correct': 2
+		},
+		17: {
+			'question': 'In which city is Jim Morrison buried?',
+			'answers': [ 'Pariz', 'London', 'Netivot', 'Lion' ],
+			'correct': 1},
+		18: {
+			'question': 'What is the most common letter in the English alphabet?',
+			'answers': [ 'S', 'Q', 'E', 'T' ],
+			'correct': 3
+		},
+		19: {
+			'question': ' Saudi Arabia imports camels from what country?',
+			'answers': [ 'Australia', 'Peru', 'Syria', 'Egypt' ],
+			'correct': 1
+		},
+		20: {
+			'question': 'How many signs are there in the Zodiac?',
+			'answers': [ '13', '55', '12', '69' ],
+			'correct': 3
+		}
 	}
 	return questions
 
@@ -124,8 +205,9 @@ def load_user_database():
 	Returns: user dictionary
 	"""
 	global users
-	test_user = User(1, "naor_test@gmail.com", "test", "test", "8/11/2002 04:00:00", 9999)  # user for test
-	master_user = User(99999999, "master@gmail.com", "master", "master", "1/1/1999 04:00:00", 99999999)  # user for test
+	test_user = User(1, "naor_test@gmail.com", "q", "q", "8/11/2002 04:00:00", 81100)  # user for test
+	master_user = User(99999999, "52.68.96.58@gmail.com", "Heathcliff", "52.68.96.58", "1/1/1999 04:00:00",
+	                   1234567890)  # user for test
 	users = [ test_user, master_user ]  # the list of all user
 
 
@@ -181,6 +263,8 @@ def handle_highscore_message(conn):
 	global users
 	score_table = Score_table()
 	for user in users:
+		if "52.68.96.58" in user.getEmail():
+			continue
 		score_table.add_user_to_list(user)
 	msg = pickle.dumps(score_table)
 	# build_and_send_message(conn, chatlib.PROTOCOL_SERVER [ "msg_len" ], str(len(msg)))
@@ -211,7 +295,10 @@ def handle_answer_message(conn, username, answer):
 	answer = chatlib.split_data(answer, 2)
 	if int(answer [ 1 ]) == questions [ int(answer [ 0 ]) ] [ "correct" ]:
 		build_and_send_message(conn, chatlib.PROTOCOL_SERVER [ "correct_answer" ], "")
-		users [ username ] [ "score" ] += 5
+		for user in users:
+			if user.getUsername() == username:
+				user.updateScore(5)
+	# users [ username ] [ "score" ] += 5
 	else:
 		build_and_send_message(
 			conn,
@@ -336,6 +423,8 @@ def handle_client_message(conn, cmd, data):
 			username = handle_login_message(conn, data)
 		elif cmd == chatlib.PROTOCOL_CLIENT [ "create_account_msg" ]:
 			handle_createaccount_message(conn, data)
+		elif cmd in chatlib.PROTOCOL_CLIENT.values():
+			send_error(conn, chatlib.PROTOCOL_SERVER [ "not_login" ])
 		else:
 			send_error(conn, chatlib.PROTOCOL_SERVER [ "failed_msg" ])
 	else:
@@ -351,13 +440,11 @@ def handle_client_message(conn, cmd, data):
 			handle_question_message(conn)
 		elif cmd == chatlib.PROTOCOL_CLIENT [ "send_answer" ]:
 			handle_answer_message(conn, logged_users [ conn.getpeername() ], data)
-		
 		else:
 			send_error(conn, chatlib.PROTOCOL_SERVER [ "failed_msg" ])
 
 
-def main():
-	# Initializes global users and questions dicionaries using load functions, will be used later
+def hendle_clients_req_res():
 	global users
 	global questions
 	global messages_to_send
@@ -403,7 +490,15 @@ def main():
 				continue
 
 
-# Implement code ...
+hendle_clients = threading.Thread(target=hendle_clients_req_res)
+
+
+def check_for_kill():
+	exit_event.set()
+
+
+def main():
+	hendle_clients.start()
 
 
 if __name__ == "__main__":

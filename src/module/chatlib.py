@@ -37,6 +37,7 @@ PROTOCOL_SERVER = {
 	"send_question": "YOUR_QUESTION",
 	"correct_answer": "CORRECET_ANSWER",
 	"wrong_answer": "WRONG_ANSWER",
+	"not_login": "NOT_LOGIN",
 	"all_score": "ALL_SCORE",
 	"msg_len": "MSG_LENGTH",
 	"e_un_ok": "E_UN_OK",
