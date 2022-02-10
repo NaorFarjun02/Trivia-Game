@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>960</width>
+    <height>730</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(54, 54, 54);</string>
+  </property>
+  <widget class="QLabel" name="home_back_label">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>20</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(65, 65, 65);
+border-radius:25px;
+border:1px;
+
+padding:3px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::PlainText</enum>
+   </property>
+   <property name="pixmap">
+    <pixmap>icons/home.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="backbutton">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>20</y>
+     <width>71</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:1px;
+background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="scoretable_title">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>341</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+font: 40pt &quot;Calibri&quot;;</string>
+   </property>
+   <property name="text">
+    <string>Score Table</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="score_table">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>100</y>
+     <width>897</width>
+     <height>600</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">* {
+	text-align: center;
+    font: 18pt &quot;Calibri&quot;;
+	background-color: rgb(159, 159, 159);
+}
+</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+   <row>
+    <property name="text">
+     <string>1</string>
+    </property>
+   </row>
+   <column>
+    <property name="text">
+     <string>Username</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>UID</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Score</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Game Count</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Win Count</string>
+    </property>
+   </column>
+   <item row="0" column="0">
+    <property name="text">
+     <string>test</string>
+    </property>
+   </item>
+   <item row="0" column="1">
+    <property name="text">
+     <string>324</string>
+    </property>
+   </item>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

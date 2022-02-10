@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>960</width>
+    <height>730</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+background-color: rgb(54, 54, 54);
+}
+
+QPushButton{
+font: 17pt &quot;Calibri&quot;;
+text-align: left;
+margin:0;
+padding:40px;
+	color: rgb(255, 255, 255);
+border: 1px solid rgb(199, 199, 199);
+border-radius:10px;
+	background: transparent;
+outline:none;
+}</string>
+  </property>
+  <widget class="QLabel" name="home_back_label">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>10</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(65, 65, 65);
+border-radius:25px;
+border:1px;
+
+padding:3px;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::PlainText</enum>
+   </property>
+   <property name="pixmap">
+    <pixmap>icons/home.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="backbutton">
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>10</y>
+     <width>71</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:1px;
+background: transparent;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="question_label">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>460</y>
+     <width>581</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:none;
+font: 18pt &quot;Calibri&quot;;
+margin:0;
+padding:0;
+color: rgb(244, 244, 0);
+</string>
+   </property>
+   <property name="text">
+    <string>Neymar born in ?</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="answer_1_label">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>530</y>
+     <width>281</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Brazil</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="number_answer_1">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>530</y>
+     <width>41</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 22pt &quot;Calibri&quot;;
+border: none;</string>
+   </property>
+   <property name="text">
+    <string>|1|</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="answer_2_label">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>600</y>
+     <width>281</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Brazil</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="number_answer_2">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>600</y>
+     <width>41</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 22pt &quot;Calibri&quot;;
+border:none;</string>
+   </property>
+   <property name="text">
+    <string>|2|</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="answer_4_label">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>600</y>
+     <width>281</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Brazil</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="answer_3_label">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>530</y>
+     <width>281</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Brazil</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="number_answer_3">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>530</y>
+     <width>41</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 22pt &quot;Calibri&quot;;
+border: none;</string>
+   </property>
+   <property name="text">
+    <string>|3|</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="number_answer_4">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>600</y>
+     <width>41</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 22pt &quot;Calibri&quot;;
+border:none;</string>
+   </property>
+   <property name="text">
+    <string>|4|</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="score_label">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>320</y>
+     <width>101</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:none;
+font: 22pt &quot;Calibri&quot;;
+margin:0;
+padding:0;
+color: rgb(244, 244, 0);
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="score_title">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>300</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+font: 15pt &quot;Calibri&quot;;
+text-decoration: underline;</string>
+   </property>
+   <property name="text">
+    <string>Score</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="time_label">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>320</y>
+     <width>101</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:none;
+font: 22pt &quot;Calibri&quot;;
+margin:0;
+padding:0;
+color: rgb(244, 244, 0);
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="time_titel">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>300</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+font: 15pt &quot;Calibri&quot;;
+text-decoration: underline;</string>
+   </property>
+   <property name="text">
+    <string>Time</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="question_number_label_count">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>30</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border:none;
+font: 20pt &quot;Calibri&quot;;
+margin:0;
+padding:0;
+color: rgb(244, 244, 0);
+</string>
+   </property>
+   <property name="text">
+    <string>0</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="question_number_title">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>30</y>
+     <width>221</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(255, 255, 255);
+font: 20pt &quot;Calibri&quot;;
+text-decoration: underline;</string>
+   </property>
+   <property name="text">
+    <string>Question Number:</string>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::AutoText</enum>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <zorder>home_back_label</zorder>
+  <zorder>backbutton</zorder>
+  <zorder>question_label</zorder>
+  <zorder>number_answer_1</zorder>
+  <zorder>number_answer_2</zorder>
+  <zorder>number_answer_3</zorder>
+  <zorder>number_answer_4</zorder>
+  <zorder>score_label</zorder>
+  <zorder>score_title</zorder>
+  <zorder>time_label</zorder>
+  <zorder>time_titel</zorder>
+  <zorder>question_number_label_count</zorder>
+  <zorder>question_number_title</zorder>
+  <zorder>answer_1_label</zorder>
+  <zorder>answer_2_label</zorder>
+  <zorder>answer_4_label</zorder>
+  <zorder>answer_3_label</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

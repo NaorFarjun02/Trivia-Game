@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="signal">
+    <file>no-signal.png</file>
+    <file>signal.png</file>
+  </qresource>
+</RCC>

@@ -81,13 +81,13 @@ background: transparent;</string>
     <rect>
      <x>200</x>
      <y>460</y>
-     <width>431</width>
+     <width>581</width>
      <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">border:none;
-font: 20pt &quot;Calibri&quot;;
+font: 18pt &quot;Calibri&quot;;
 margin:0;
 padding:0;
 color: rgb(244, 244, 0);

@@ -13,6 +13,7 @@ from subFiles.profile import Profile
 from subFiles.scoretable import ScoreTable
 from subFiles.game import Game
 
+
 global_vers.LOGIN_STATUS = 0  # in the start the user is not login
 
 app = QApplication(sys.argv)  # create the app
